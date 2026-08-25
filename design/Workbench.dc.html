@@ -1,0 +1,248 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <style>
+    body { margin: 0; font-family: 'Be Vietnam Pro', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    * { box-sizing: border-box; }
+    a { color: #0D0F14; text-decoration: none; }
+    a:hover { color: #00785F; }
+  </style>
+</helmet>
+
+<div style="width: 1440px; display: grid; grid-template-columns: 248px 1fr; background: #F7F7F8; color: #0D0F14;">
+
+  <!-- ══ Cột trái ══ -->
+  <div style="border-right: 1px solid rgba(13,15,20,0.08); background: #FFFFFF; padding: 18px 14px; display: flex; flex-direction: column; gap: 22px;">
+
+    <div style="display: flex; align-items: center; gap: 9px; padding: 0 6px;">
+      <span style="display: inline-flex; width: 28px; height: 28px; align-items: center; justify-content: center; border-radius: 8px; background: {{accent}};">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h9M4 12h16M4 17h6"/></svg>
+      </span>
+      <span style="font-size: 15.5px; font-weight: 700; letter-spacing: -0.02em;">Trợ Thủ</span>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 8px; height: 38px; padding: 0 10px 0 11px; border: 1px solid rgba(13,15,20,0.1); border-radius: 10px; background: #FAFAFB;">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#868C97" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg>
+      <span style="flex-grow: 1; font-size: 13.5px; color: #868C97;">Tìm việc cần làm</span>
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #A0A5AE; border: 1px solid rgba(13,15,20,0.1); border-radius: 4px; padding: 2px 4px;">⌘K</span>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 2px;">
+      <sc-for list="{{navChinh}}" as="n" hint-placeholder-count="3">
+        <div style="display: flex; align-items: center; gap: 10px; height: 38px; padding: 0 10px; border-radius: 9px; background: {{n.nen}}; color: {{n.muc}};">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="{{n.icon}}"/></svg>
+          <span style="flex-grow: 1; font-size: 14px; font-weight: {{n.dam}};">{{n.ten}}</span>
+          <sc-if value="{{n.huyHieu}}" hint-placeholder-val="{{true}}">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; color: #FFFFFF; background: {{accent}}; border-radius: 999px; min-width: 18px; height: 18px; display: inline-flex; align-items: center; justify-content: center; padding: 0 5px;">{{n.so}}</span>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+
+    <div>
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.09em; color: #A0A5AE; padding: 0 10px; margin-bottom: 8px;">NGÀNH</div>
+      <div style="display: flex; flex-direction: column; gap: 2px;">
+        <sc-for list="{{nganh}}" as="g" hint-placeholder-count="5">
+          <div style="display: flex; align-items: center; gap: 10px; height: 36px; padding: 0 10px; border-radius: 9px; background: {{g.nen}}; color: {{g.muc}};">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="{{g.icon}}"/></svg>
+            <span style="flex-grow: 1; font-size: 13.5px; font-weight: {{g.dam}};">{{g.ten}}</span>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #A0A5AE;">{{g.so}}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="flex-grow: 1;"></div>
+
+    <div style="border: 1px solid rgba(13,15,20,0.09); border-radius: 12px; padding: 14px; background: #FAFAFB;">
+      <div style="font-size: 12.5px; color: #6B7280; margin-bottom: 5px;">Số dư tài khoản</div>
+      <div style="font-size: 22px; font-weight: 700; letter-spacing: -0.025em; margin-bottom: 3px;">318.000₫</div>
+      <div style="font-size: 12px; color: #A0A5AE; margin-bottom: 12px;">còn khoảng 7 bài giảng</div>
+      <button style="width: 100%; font-family: inherit; font-size: 13.5px; font-weight: 600; color: #FFFFFF; background: {{accent}}; border: none; border-radius: 9px; height: 36px; cursor: pointer;">Nạp thêm</button>
+    </div>
+
+  </div>
+
+  <!-- ══ Cột phải ══ -->
+  <div>
+
+    <!-- Thanh trên -->
+    <div style="display: flex; align-items: center; justify-content: space-between; height: 60px; padding: 0 28px; border-bottom: 1px solid rgba(13,15,20,0.08); background: #FFFFFF;">
+      <div style="display: flex; align-items: baseline; gap: 10px;">
+        <span style="font-size: 16px; font-weight: 650; letter-spacing: -0.015em;">Bàn làm việc</span>
+        <span style="font-size: 13.5px; color: #868C97;">Thứ Tư, 26/08 · 21:40</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 8-3 8h18s-3-1-3-8M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+        <div style="display: flex; align-items: center; gap: 9px;">
+          <span style="display: inline-flex; width: 30px; height: 30px; align-items: center; justify-content: center; border-radius: 999px; background: #E9EAEC; font-size: 12.5px; font-weight: 600; color: #464C57;">HL</span>
+          <span style="font-size: 13.5px; font-weight: 500;">Cô Hương Lan</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding: 26px 28px 36px;">
+
+      <!-- ── Việc đang chạy ── -->
+      <div style="background: #FFFFFF; border: 1px solid rgba(13,15,20,0.09); border-radius: 16px; padding: 22px 24px; margin-bottom: 14px; box-shadow: 0 1px 2px rgba(13,15,20,0.03), 0 16px 40px -28px rgba(13,15,20,0.35);">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 20px;">
+          <div style="display: flex; align-items: center; gap: 13px;">
+            <span style="display: inline-flex; width: 40px; height: 40px; align-items: center; justify-content: center; border-radius: 11px; background: #F9EAE6;">
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; font-weight: 500; color: #B7472A;">PPTX</span>
+            </span>
+            <div>
+              <div style="font-size: 16px; font-weight: 650; letter-spacing: -0.015em;">Bài giảng Ngữ văn 8 — Lão Hạc</div>
+              <div style="font-size: 13px; color: #868C97; margin-top: 2px;">Bắt đầu 21:32 · 13 trang · đã trừ 53.000₫</div>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 13px; color: #6B7280;">Còn khoảng <strong style="color: #0D0F14; font-weight: 600;">6 phút</strong></span>
+            <button style="font-family: inherit; font-size: 13px; font-weight: 500; color: #6B7280; background: transparent; border: 1px solid rgba(13,15,20,0.13); border-radius: 8px; height: 32px; padding: 0 13px; cursor: pointer;">Huỷ</button>
+          </div>
+        </div>
+
+        <div style="height: 6px; border-radius: 4px; background: #EDEEF0; overflow: hidden; margin-bottom: 18px;">
+          <div style="width: 62%; height: 100%; border-radius: 4px; background: {{accent}};"></div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px;">
+          <sc-for list="{{chang}}" as="c" hint-placeholder-count="5">
+            <div style="border-top: 2px solid {{c.vien}}; padding-top: 11px;">
+              <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">
+                <sc-if value="{{c.xong}}" hint-placeholder-val="{{true}}">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                </sc-if>
+                <span style="font-size: 13px; font-weight: {{c.dam}}; color: {{c.muc}};">{{c.ten}}</span>
+              </div>
+              <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #A0A5AE;">{{c.ghiChu}}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <!-- Hàng đợi -->
+      <div style="display: flex; align-items: center; gap: 13px; background: #FFFFFF; border: 1px solid rgba(13,15,20,0.08); border-radius: 12px; padding: 14px 18px; margin-bottom: 30px;">
+        <span style="display: inline-flex; width: 30px; height: 30px; align-items: center; justify-content: center; border-radius: 8px; background: #F1F2F4;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#868C97" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+        </span>
+        <div style="flex-grow: 1;">
+          <span style="font-size: 14px; font-weight: 500;">Đề kiểm tra 15 phút — Ngữ văn 8</span>
+          <span style="font-size: 13px; color: #868C97; margin-left: 10px;">đang xếp hàng, trước bạn còn 2 việc</span>
+        </div>
+        <span style="font-size: 13px; color: #6B7280;">bắt đầu sau ~9 phút</span>
+      </div>
+
+      <!-- ── Công cụ ── -->
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
+        <h2 style="margin: 0; font-size: 17px; font-weight: 650; letter-spacing: -0.015em;">Công cụ ngành Giáo dục</h2>
+        <div style="display: flex; align-items: center; gap: 3px; padding: 3px; border-radius: 9px; background: #EDEEF0;">
+          <span style="font-size: 12.5px; font-weight: 600; color: #0D0F14; background: #FFFFFF; border-radius: 7px; padding: 6px 13px; box-shadow: 0 1px 2px rgba(13,15,20,0.06);">Hay dùng</span>
+          <span style="font-size: 12.5px; font-weight: 500; color: #6B7280; padding: 6px 13px;">Tất cả</span>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 32px;">
+        <sc-for list="{{congCu}}" as="t" hint-placeholder-count="4">
+          <div style="background: #FFFFFF; border: 1px solid rgba(13,15,20,0.08); border-radius: 13px; padding: 16px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 11px;">
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; font-weight: 500; color: {{t.extMuc}}; background: {{t.extNen}}; border-radius: 5px; padding: 3px 6px;">{{t.ext}}</span>
+              <span style="font-size: 12px; color: #A0A5AE;">{{t.thoiGian}}</span>
+            </div>
+            <div style="font-size: 14.5px; font-weight: 600; line-height: 1.35; letter-spacing: -0.01em; margin-bottom: 14px; min-height: 39px;">{{t.ten}}</div>
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <span style="font-size: 15px; font-weight: 700; letter-spacing: -0.02em;">{{t.gia}}</span>
+              <span style="display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 8px; background: #F1F2F4;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0D0F14" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+
+      <!-- ── Tệp đã tạo ── -->
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <h2 style="margin: 0; font-size: 17px; font-weight: 650; letter-spacing: -0.015em;">Tệp đã tạo</h2>
+        <span style="font-size: 13.5px; font-weight: 500; color: {{accent}};">Xem tất cả →</span>
+      </div>
+
+      <div style="background: #FFFFFF; border: 1px solid rgba(13,15,20,0.08); border-radius: 13px; overflow: hidden;">
+        <div style="display: grid; grid-template-columns: 1fr 150px 130px 110px 92px; gap: 16px; padding: 11px 18px; background: #FAFAFB; border-bottom: 1px solid rgba(13,15,20,0.07); font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.07em; color: #A0A5AE;">
+          <div>TÊN TỆP</div><div>CÔNG CỤ</div><div>TẠO LÚC</div><div>CHI PHÍ</div><div></div>
+        </div>
+        <sc-for list="{{tep}}" as="f" hint-placeholder-count="4">
+          <div style="display: grid; grid-template-columns: 1fr 150px 130px 110px 92px; gap: 16px; padding: 13px 18px; border-bottom: 1px solid rgba(13,15,20,0.055); align-items: center;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; font-weight: 500; color: {{f.extMuc}}; background: {{f.extNen}}; border-radius: 4px; padding: 3px 5px;">{{f.ext}}</span>
+              <span style="font-size: 14px; font-weight: 500;">{{f.ten}}</span>
+            </div>
+            <div style="font-size: 13px; color: #6B7280;">{{f.congCu}}</div>
+            <div style="font-size: 13px; color: #868C97;">{{f.khi}}</div>
+            <div style="font-size: 13px; color: #6B7280;">{{f.gia}}</div>
+            <div style="text-align: right;"><span style="font-size: 13px; font-weight: 600; color: {{accent}};">Tải về</span></div>
+          </div>
+        </sc-for>
+      </div>
+
+    </div>
+  </div>
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"accent":{"editor":"color","default":"#00785F","options":["#00785F","#1F4FD8","#0D0F14","#B4460A"]}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const accent = this.props.accent ?? '#00785F';
+    const softBg = 'color-mix(in srgb, ' + accent + ' 9%, #FFFFFF)';
+
+    const navChinh = [
+      { ten: 'Bàn làm việc', icon: 'M4 5h7v6H4zM13 5h7v10h-7zM4 13h7v6H4zM13 17h7v2h-7z', nen: '#F1F2F4', muc: '#0D0F14', dam: '600', huyHieu: false, so: '' },
+      { ten: 'Việc đang chạy', icon: 'M12 3a9 9 0 1 1-9 9M12 7v5l3.5 2', nen: 'transparent', muc: '#464C57', dam: '500', huyHieu: true, so: '2' },
+      { ten: 'Tệp đã tạo', icon: 'M4 6a2 2 0 0 1 2-2h4l2 2.5h6a2 2 0 0 1 2 2V18a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6z', nen: 'transparent', muc: '#464C57', dam: '500', huyHieu: false, so: '' }
+    ];
+
+    const nganh = [
+      { ten: 'Giáo dục', so: '3', icon: 'M3 8l9-4 9 4-9 4-9-4zM7 11v5c0 1.1 2.2 2 5 2s5-.9 5-2v-5', nen: softBg, muc: accent, dam: '600' },
+      { ten: 'Kế toán / Tài chính', so: '3', icon: 'M7 3h10a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zM9 7h6M9 11h2M13 11h2M9 15h2M13 15h2', nen: 'transparent', muc: '#464C57', dam: '500' },
+      { ten: 'Xây dựng / Kỹ thuật', so: '3', icon: 'M12 3l9 16H3l9-16zM12 10v4M12 17h.01', nen: 'transparent', muc: '#464C57', dam: '500' },
+      { ten: 'Bán hàng / Marketing', so: '3', icon: 'M4 9h4l6-4v14l-6-4H4V9zM18 9a4 4 0 0 1 0 6', nen: 'transparent', muc: '#464C57', dam: '500' },
+      { ten: 'Nhân sự / Hành chính', so: '2', icon: 'M16 20v-2a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v2M10 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM19 8v6M22 11h-6', nen: 'transparent', muc: '#464C57', dam: '500' }
+    ];
+
+    const chang = [
+      { ten: 'Đọc nguồn',   ghiChu: 'xong 21:33', xong: true,  vien: accent,      muc: '#0D0F14', dam: '500' },
+      { ten: 'Lên dàn bài', ghiChu: '13 trang',   xong: true,  vien: accent,      muc: '#0D0F14', dam: '500' },
+      { ten: 'Chuẩn bị hình', ghiChu: '4 hình',   xong: true,  vien: accent,      muc: '#0D0F14', dam: '500' },
+      { ten: 'Vẽ từng trang', ghiChu: 'trang 8/13', xong: false, vien: accent,    muc: '#0D0F14', dam: '600' },
+      { ten: 'Xuất PowerPoint', ghiChu: 'chưa tới', xong: false, vien: '#E4E5E8', muc: '#A0A5AE', dam: '500' }
+    ];
+
+    const P = { ext: 'PPTX', extNen: '#F9EAE6', extMuc: '#B7472A' };
+    const W = { ext: 'DOCX', extNen: '#E8EEF7', extMuc: '#2B579A' };
+
+    const congCu = [
+      { ...P, ten: 'Tạo bài giảng PowerPoint', thoiGian: '10–20 ph', gia: '45.000₫' },
+      { ...W, ten: 'Soạn đề kiểm tra',          thoiGian: '4–8 ph',   gia: '12.000₫' },
+      { ...W, ten: 'Phiếu bài tập phân hoá',    thoiGian: '3–6 ph',   gia: '9.000₫' },
+      { ...W, ten: 'Kế hoạch bài dạy',          thoiGian: '3–5 ph',   gia: '10.000₫' }
+    ];
+
+    const tep = [
+      { ...P, ten: 'Bài giảng Toán 5 — Phân số bằng nhau', congCu: 'Bài giảng PPTX', khi: 'hôm qua 22:10', gia: '45.000₫' },
+      { ...W, ten: 'Phiếu bài tập Tiếng Việt 3 — Tuần 6',  congCu: 'Phiếu bài tập',  khi: 'hôm qua 21:35', gia: '9.000₫' },
+      { ...W, ten: 'Đề kiểm tra giữa kỳ Lịch sử 7',        congCu: 'Đề kiểm tra',    khi: '24/08 20:02',   gia: '12.000₫' },
+      { ...P, ten: 'Bài giảng Địa lí 6 — Khí hậu',         congCu: 'Bài giảng PPTX', khi: '22/08 21:18',   gia: '45.000₫' }
+    ];
+
+    return { accent, navChinh, nganh, chang, congCu, tep };
+  }
+}
+</script>
+</body>
+</html>

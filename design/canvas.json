@@ -1,0 +1,172 @@
+{
+  "pages": [
+    {
+      "id": "page-1",
+      "name": "Khách mới"
+    },
+    {
+      "id": "page-2",
+      "name": "Trong app"
+    },
+    {
+      "id": "page-3",
+      "name": "Quản trị"
+    }
+  ],
+  "artboards": [
+    {
+      "file": "Main.dc.html",
+      "title": "1 · Trang chủ",
+      "page": "page-1",
+      "x": 0,
+      "y": 0,
+      "w": 1280,
+      "h": 2650
+    },
+    {
+      "file": "Nganh.dc.html",
+      "title": "2 · Trang ngành Giáo dục",
+      "page": "page-1",
+      "x": 1400,
+      "y": 0,
+      "w": 1280,
+      "h": 2450
+    },
+    {
+      "file": "Pricing.dc.html",
+      "title": "3 · Bảng giá",
+      "page": "page-1",
+      "x": 2800,
+      "y": 0,
+      "w": 1280,
+      "h": 2300
+    },
+    {
+      "file": "Auth.dc.html",
+      "title": "4 · Đăng nhập",
+      "page": "page-1",
+      "x": 4200,
+      "y": 0,
+      "w": 1280,
+      "h": 820
+    },
+    {
+      "file": "Mobile.dc.html",
+      "title": "5 · Điện thoại — trang chủ",
+      "page": "page-1",
+      "x": 5600,
+      "y": 0,
+      "w": 390,
+      "h": 1560
+    },
+    {
+      "file": "Workbench.dc.html",
+      "title": "6 · Bàn làm việc",
+      "page": "page-2",
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 1240
+    },
+    {
+      "file": "ToolPage.dc.html",
+      "title": "7 · Trang công cụ",
+      "page": "page-2",
+      "x": 1560,
+      "y": 0,
+      "w": 1440,
+      "h": 1220
+    },
+    {
+      "file": "Nap.dc.html",
+      "title": "8 · Nạp tiền",
+      "page": "page-2",
+      "x": 3120,
+      "y": 0,
+      "w": 1440,
+      "h": 1120
+    },
+    {
+      "file": "Xong.dc.html",
+      "title": "9 · Đã xong, tải về",
+      "page": "page-2",
+      "x": 4680,
+      "y": 0,
+      "w": 1440,
+      "h": 1020
+    },
+    {
+      "file": "MobileTool.dc.html",
+      "title": "10 · Điện thoại — tạo & nạp",
+      "page": "page-2",
+      "x": 6240,
+      "y": 0,
+      "w": 880,
+      "h": 920
+    },
+    {
+      "file": "States.dc.html",
+      "title": "11 · Rỗng · Lỗi · Hết tiền",
+      "page": "page-2",
+      "x": 7280,
+      "y": 0,
+      "w": 1240,
+      "h": 780
+    },
+    {
+      "file": "Admin.dc.html",
+      "title": "12 · Trang quản trị",
+      "page": "page-3",
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 980
+    }
+  ],
+  "annotations": [
+    {
+      "id": "he-thiet-ke",
+      "page": "page-1",
+      "x": 0,
+      "y": -330,
+      "w": 700,
+      "text": "TRỢ THỦ — bộ màn hoàn chỉnh\ntrothu.vercel.app · Next.js trên Vercel + Supabase + Claude Managed Agents\n\nBa trang: KHÁCH MỚI · TRONG APP · QUẢN TRỊ (đổi ở menu trang trên thanh công cụ).\n\nHỆ THIẾT KẾ — giữ nguyên khi dựng React\nMàu   nền #F7F7F8 · mặt #FFFFFF · mực #0D0F14 · phụ #464C57 · mờ #868C97 · rất mờ #A0A5AE\n      viền rgba(13,15,20,0.08) · nhấn #00785F · nền nhấn = nhấn trộn 7–10% với trắng\n      cảnh báo #C0392B · lưu ý #B4720E trên nền #FDF6E7\nChữ   Be Vietnam Pro 400/500/600/650/700/800 · IBM Plex Mono cho số, mã, nhãn tệp\n      tiêu đề letter-spacing −0.02 đến −0.035em · thân 1.55–1.7 line-height\nHình  bo góc 8/9/10/11/12/14/16 · bóng hai lớp rất nhẹ · khoảng cách bội số 4\n      biểu tượng nét 1.9–2.2, bo tròn đầu · ô bấm trên điện thoại ≥ 44px\nTệp   PPTX #B7472A trên #F9EAE6 · DOCX #2B579A trên #E8EEF7 · XLSX #1F6F43 trên #E6F1EA\n\nToàn bộ ghi trong docs/design-system.md để dựng lại đúng."
+    },
+    {
+      "id": "p1-note",
+      "page": "page-1",
+      "x": 1400,
+      "y": -330,
+      "w": 700,
+      "text": "TRANG NÀY = NGƯỜI CHƯA ĐĂNG NHẬP\n\n1 Trang chủ — ô tìm kiếm chính là nút hành động\n2 Trang ngành — cỗ máy SEO thật sự, không phải trang chủ\n3 Bảng giá — giá từng công cụ tách bạch, kèm phần “Câu hỏi về tiền”\n4 Đăng nhập — Google + email không mật khẩu (Supabase Auth)\n5 Điện thoại — vì phần lớn giáo viên vào bằng điện thoại\n\nDòng chảy: Google → trang ngành → trang công cụ → đăng nhập → làm bài đầu miễn phí\n→ thấy được việc → nạp tiền. Trang chủ KHÔNG phải cửa vào chính."
+    },
+    {
+      "id": "p2-note",
+      "page": "page-2",
+      "x": 0,
+      "y": -300,
+      "w": 700,
+      "text": "TRANG NÀY = NGƯỜI ĐÃ ĐĂNG NHẬP\n\n6  Bàn làm việc — cột trái 5 ngành cố định, thêm ngành chỉ là thêm dòng\n7  Trang công cụ — bảng giá tách dòng, cộng ngay khi đổi tuỳ chọn\n8  Nạp tiền — QR chuyển khoản trước MoMo (không phí, tự đối soát)\n9  Đã xong — nút tải về to nhất, xem trước 13 trang tại chỗ\n10 Điện thoại — thanh giá dính đáy, nút “Lưu ảnh mã QR”\n11 Ba trạng thái — rỗng, lỗi, hết tiền: chỗ dễ mất khách nhất\n\nMỗi việc chạy 10–20 phút, nên trạng thái chạy và hàng đợi là màn quan trọng\nnhất của cả sản phẩm, không phải trang marketing."
+    },
+    {
+      "id": "p3-note",
+      "page": "page-3",
+      "x": 0,
+      "y": -320,
+      "w": 720,
+      "text": "TRANG QUẢN TRỊ — anh sẽ cần ngay ngày đầu có khách thật\n\nCột quan trọng nhất là BIÊN LỢI NHUẬN TỪNG VIỆC: giá bán trừ chi phí API thật.\nKhông có cột này thì không biết công cụ nào đang lỗ cho tới lúc hết tiền.\n\nTrong mẫu, “Làm đẹp PPTX cũ” đang ở biên 29–31% — đúng loại tín hiệu cần\nnhìn thấy trong tuần đầu để tăng giá hoặc đổi model rẻ hơn cho riêng công cụ đó.\n\nDải cảnh báo đỏ trên cùng gom đúng hai loại việc PHẢI làm tay:\n· job lỗi chưa hoàn tiền\n· chuyển khoản sai nội dung, hệ thống không tự khớp được\n\nSố liệu trong mẫu là số giả để xem bố cục."
+    },
+    {
+      "id": "gia-da-doi",
+      "page": "page-1",
+      "x": 2800,
+      "y": -330,
+      "w": 700,
+      "text": "⚠️ GIÁ ĐÃ ĐỔI SO VỚI BẢN ANH XEM TỐI QUA\n\nBảng giá cũ SAI: bài giảng 15.000₫ trong khi giá vốn khoảng 52.000₫\n— càng đông khách càng lỗ. Nguyên nhân: bảng đó tính khi còn định chạy\nKimi K2.7 Code, nhưng ADR-0001 đã chốt Managed Agents, chỉ chạy được\nmodel của Anthropic.\n\nĐã tính lại và sửa toàn bộ 12 màn:\n· Bài giảng PowerPoint     15.000₫ → 45.000₫\n· Làm đẹp bài giảng cũ     10.000₫ → 32.000₫\n· Đề kiểm tra                8.000₫ → 12.000₫\n· Phiếu bài tập              6.000₫ →  9.000₫\n· MỚI: Bài giảng từ mẫu có sẵn      15.000₫  (tầng rẻ cho người ngại giá)\n\nQuy tắc: giá bán = giá vốn × 2,2 (nuôi hoàn tiền, bài đầu miễn phí,\nphí thanh toán, thuế, và sai số ước tính ±50%).\n\nCâu hỏi cần anh trả lời: 45.000₫ một bài giảng — giáo viên có trả không?\nChi tiết ở docs/adr/0004-pricing-and-unit-economics.md"
+    }
+  ],
+  "launch": {
+    "view": "canvas",
+    "page": "page-1"
+  }
+}

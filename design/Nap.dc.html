@@ -1,0 +1,278 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+  <style>
+    body { margin: 0; font-family: 'Be Vietnam Pro', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    * { box-sizing: border-box; }
+    a { color: #0D0F14; text-decoration: none; }
+    a:hover { color: #00785F; }
+  </style>
+</helmet>
+
+<div style="width: 1440px; background: #F7F7F8; color: #0D0F14;">
+
+  <!-- Thanh trên -->
+  <div style="display: flex; align-items: center; justify-content: space-between; height: 60px; padding: 0 40px; border-bottom: 1px solid rgba(13,15,20,0.08); background: #FFFFFF;">
+    <div style="display: flex; align-items: center; gap: 20px;">
+      <div style="display: flex; align-items: center; gap: 9px;">
+        <span style="display: inline-flex; width: 27px; height: 27px; align-items: center; justify-content: center; border-radius: 8px; background: {{accent}};">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h9M4 12h16M4 17h6"/></svg>
+        </span>
+        <span style="font-size: 15.5px; font-weight: 700; letter-spacing: -0.02em;">Trợ Thủ</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 8px; font-size: 13.5px; color: #868C97;">
+        <span>Tài khoản</span>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C4C8CE" stroke-width="2.2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>
+        <span style="color: #0D0F14; font-weight: 500;">Nạp tiền</span>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 14px;">
+      <div style="display: flex; align-items: baseline; gap: 7px; font-size: 13.5px;">
+        <span style="color: #868C97;">Số dư</span><span style="font-weight: 650;">28.000₫</span>
+      </div>
+      <span style="display: inline-flex; width: 30px; height: 30px; align-items: center; justify-content: center; border-radius: 999px; background: #E9EAEC; font-size: 12.5px; font-weight: 600; color: #464C57;">HL</span>
+    </div>
+  </div>
+
+  <div style="max-width: 1000px; margin: 0 auto; padding: 40px 40px 56px;">
+
+    <h1 style="margin: 0 0 6px; font-size: 30px; font-weight: 700; letter-spacing: -0.03em;">Nạp tiền vào tài khoản</h1>
+    <p style="margin: 0 0 30px; font-size: 15.5px; color: #464C57;">Tiền trong tài khoản không hết hạn và dùng được cho mọi công cụ ở cả 5 ngành.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 360px; gap: 22px; align-items: start;">
+
+      <!-- ══ Trái ══ -->
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+
+        <!-- Bước 1: chọn mức -->
+        <div style="background: #FFFFFF; border: 1px solid rgba(13,15,20,0.08); border-radius: 16px; padding: 22px 24px;">
+          <div style="display: flex; align-items: center; gap: 11px; margin-bottom: 17px;">
+            <span style="display: inline-flex; width: 24px; height: 24px; align-items: center; justify-content: center; border-radius: 999px; background: #0D0F14; color: #FFFFFF; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500;">1</span>
+            <span style="font-size: 16px; font-weight: 650; letter-spacing: -0.015em;">Chọn số tiền</span>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-bottom: 12px;">
+            <sc-for list="{{goi}}" as="g" hint-placeholder-count="4">
+              <div style="position: relative; border: 1.5px solid {{g.vien}}; background: {{g.nen}}; border-radius: 12px; padding: 15px 14px 14px;">
+                <div style="font-size: 18px; font-weight: 700; letter-spacing: -0.025em; margin-bottom: 3px;">{{g.tien}}</div>
+                <div style="font-size: 12.5px; color: #6B7280;">{{g.luot}}</div>
+                <sc-if value="{{g.thuong}}" hint-placeholder-val="{{true}}">
+                  <div style="position: absolute; top: -9px; right: 10px; font-size: 11px; font-weight: 600; color: #FFFFFF; background: {{accent}}; border-radius: 999px; padding: 3px 9px;">{{g.nhan}}</div>
+                </sc-if>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 12px; border: 1px dashed rgba(13,15,20,0.16); border-radius: 12px; padding: 13px 16px;">
+            <span style="font-size: 13.5px; color: #6B7280;">Hoặc nhập số khác</span>
+            <span style="flex-grow: 1; font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #C4C8CE;">tối thiểu 50.000₫</span>
+            <span style="font-size: 14px; font-weight: 600; color: #868C97;">₫</span>
+          </div>
+        </div>
+
+        <!-- Bước 2: cách trả -->
+        <div style="background: #FFFFFF; border: 1px solid rgba(13,15,20,0.08); border-radius: 16px; padding: 22px 24px;">
+          <div style="display: flex; align-items: center; gap: 11px; margin-bottom: 17px;">
+            <span style="display: inline-flex; width: 24px; height: 24px; align-items: center; justify-content: center; border-radius: 999px; background: #0D0F14; color: #FFFFFF; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500;">2</span>
+            <span style="font-size: 16px; font-weight: 650; letter-spacing: -0.015em;">Cách thanh toán</span>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 22px;">
+            <div style="display: flex; align-items: center; gap: 12px; border: 1.5px solid {{accent}}; background: {{accentSoft}}; border-radius: 12px; padding: 14px 16px;">
+              <span style="display: inline-flex; width: 34px; height: 34px; align-items: center; justify-content: center; border-radius: 9px; background: #FFFFFF;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h2v2h-2zM18 14h2v2h-2zM14 18h2v2h-2zM18 18h2v2h-2z"/></svg>
+              </span>
+              <div style="flex-grow: 1;">
+                <div style="font-size: 14.5px; font-weight: 600;">Chuyển khoản QR</div>
+                <div style="font-size: 12.5px; color: #6B7280; margin-top: 1px;">Tự động cộng tiền · không mất phí</div>
+              </div>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px; border: 1.5px solid rgba(13,15,20,0.1); border-radius: 12px; padding: 14px 16px;">
+              <span style="display: inline-flex; width: 34px; height: 34px; align-items: center; justify-content: center; border-radius: 9px; background: #F6E9F2; font-size: 12px; font-weight: 700; color: #A50064;">M</span>
+              <div style="flex-grow: 1;">
+                <div style="font-size: 14.5px; font-weight: 600;">Ví MoMo</div>
+                <div style="font-size: 12.5px; color: #6B7280; margin-top: 1px;">Mở app MoMo để trả</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Khối QR -->
+          <div style="display: grid; grid-template-columns: 212px 1fr; gap: 26px; border: 1px solid rgba(13,15,20,0.08); border-radius: 14px; padding: 22px; background: #FAFAFB;">
+
+            <div>
+              <div style="background: #FFFFFF; border: 1px solid rgba(13,15,20,0.08); border-radius: 12px; padding: 14px; margin-bottom: 10px;">
+                <svg width="184" height="184" viewBox="0 0 25 25" style="display: block;">
+                  <rect x="0" y="0" width="25" height="25" fill="#FFFFFF"/>
+                  <sc-for list="{{qr}}" as="m" hint-placeholder-count="120">
+                    <rect x="{{m.x}}" y="{{m.y}}" width="1" height="1" fill="#0D0F14"/>
+                  </sc-for>
+                </svg>
+              </div>
+              <div style="text-align: center; font-size: 12.5px; color: #868C97;">Mở app ngân hàng, quét mã</div>
+            </div>
+
+            <div>
+              <div style="font-size: 13.5px; font-weight: 600; margin-bottom: 13px;">Hoặc chuyển khoản thủ công</div>
+              <div style="display: flex; flex-direction: column; gap: 11px;">
+                <sc-for list="{{stk}}" as="s" hint-placeholder-count="5">
+                  <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 11px; border-bottom: 1px solid rgba(13,15,20,0.06);">
+                    <span style="font-size: 13px; color: #6B7280;">{{s.nhan}}</span>
+                    <div style="display: flex; align-items: center; gap: 9px;">
+                      <span style="font-family: {{s.font}}; font-size: 14px; font-weight: 600; letter-spacing: {{s.spacing}};">{{s.giaTri}}</span>
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#A0A5AE" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 9h10v10H9zM5 15V5h10"/></svg>
+                    </div>
+                  </div>
+                </sc-for>
+              </div>
+
+              <div style="display: flex; align-items: flex-start; gap: 9px; margin-top: 15px; background: #FDF6E7; border: 1px solid #F0DCA8; border-radius: 10px; padding: 12px 14px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9A6B04" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 1px;"><path d="M12 3l9.5 17H2.5L12 3zM12 10v4M12 17h.01"/></svg>
+                <div style="font-size: 12.5px; line-height: 1.55; color: #6B4F08;">Giữ nguyên nội dung chuyển khoản <strong style="font-family: 'IBM Plex Mono', monospace; font-weight: 600;">TT HL8421</strong>. Ghi sai thì hệ thống không tự cộng tiền được, phải nhắn Zalo để xử lý tay.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Đang chờ -->
+          <div style="display: flex; align-items: center; gap: 13px; margin-top: 14px; border: 1px solid {{accentLine}}; background: {{accentSoft}}; border-radius: 12px; padding: 15px 18px;">
+            <span style="display: inline-flex; width: 30px; height: 30px; align-items: center; justify-content: center; border-radius: 999px; background: #FFFFFF;">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2.2" stroke-linecap="round"><path d="M12 3a9 9 0 1 1-9 9"/></svg>
+            </span>
+            <div style="flex-grow: 1;">
+              <div style="font-size: 14px; font-weight: 600;">Đang chờ chuyển khoản…</div>
+              <div style="font-size: 12.5px; color: #464C57; margin-top: 2px;">Tiền vào tài khoản trong khoảng 1 phút. Trang này tự cập nhật, không cần tải lại.</div>
+            </div>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #6B7280;">04:32</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ Phải ══ -->
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+
+        <div style="background: #FFFFFF; border: 1px solid rgba(13,15,20,0.09); border-radius: 16px; padding: 22px; box-shadow: 0 1px 2px rgba(13,15,20,0.03), 0 20px 48px -30px rgba(13,15,20,0.4);">
+          <div style="font-size: 15px; font-weight: 650; letter-spacing: -0.015em; margin-bottom: 16px;">Đơn nạp</div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; font-size: 13.5px;">
+              <span style="color: #6B7280;">Số tiền nạp</span><span style="font-weight: 500;">300.000₫</span>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between; font-size: 13.5px;">
+              <span style="color: #6B7280;">Tặng thêm 5%</span><span style="font-weight: 500; color: {{accent}};">+ 15.000₫</span>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between; font-size: 13.5px;">
+              <span style="color: #6B7280;">Số dư hiện có</span><span style="font-weight: 500;">28.000₫</span>
+            </div>
+          </div>
+          <div style="border-top: 1px solid rgba(13,15,20,0.08); margin-top: 15px; padding-top: 15px; display: flex; align-items: baseline; justify-content: space-between;">
+            <span style="font-size: 14.5px; font-weight: 600;">Số dư sau khi nạp</span>
+            <span style="font-size: 24px; font-weight: 700; letter-spacing: -0.03em;">343.000₫</span>
+          </div>
+          <div style="font-size: 12.5px; color: #868C97; margin-top: 5px; text-align: right;">dùng được khoảng 7 bài giảng</div>
+        </div>
+
+        <div style="background: #FFFFFF; border: 1px solid rgba(13,15,20,0.08); border-radius: 14px; padding: 18px;">
+          <div style="font-size: 13.5px; font-weight: 600; margin-bottom: 13px;">343.000₫ dùng được bao nhiêu</div>
+          <div style="display: flex; flex-direction: column; gap: 11px;">
+            <sc-for list="{{quyDoi}}" as="q" hint-placeholder-count="4">
+              <div>
+                <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 5px;">
+                  <span style="font-size: 13px; color: #464C57;">{{q.ten}}</span>
+                  <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; font-weight: 600;">{{q.so}} lần</span>
+                </div>
+                <div style="height: 5px; border-radius: 3px; background: #EDEEF0; overflow: hidden;">
+                  <div style="width: {{q.phanTram}}; height: 100%; border-radius: 3px; background: {{accent}};"></div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="background: #FFFFFF; border: 1px solid rgba(13,15,20,0.08); border-radius: 14px; padding: 16px 18px;">
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <sc-for list="{{camKet}}" as="c" hint-placeholder-count="3">
+              <div style="display: flex; align-items: flex-start; gap: 9px;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;"><path d="M20 6L9 17l-5-5"/></svg>
+                <span style="font-size: 13px; line-height: 1.5; color: #464C57;">{{c}}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"accent":{"editor":"color","default":"#00785F","options":["#00785F","#1F4FD8","#0D0F14","#B4460A"]}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const accent = this.props.accent ?? '#00785F';
+    const accentSoft = 'color-mix(in srgb, ' + accent + ' 7%, #FFFFFF)';
+    const accentLine = 'color-mix(in srgb, ' + accent + ' 26%, #FFFFFF)';
+
+    const goi = [
+      { tien: '100.000₫', luot: '~2 bài giảng',  thuong: false, nhan: '',          nen: '#FFFFFF',  vien: 'rgba(13,15,20,0.1)' },
+      { tien: '200.000₫', luot: '~4 bài giảng', thuong: false, nhan: '',          nen: '#FFFFFF',  vien: 'rgba(13,15,20,0.1)' },
+      { tien: '300.000₫', luot: '~7 bài giảng', thuong: true,  nhan: 'Tặng 5%',   nen: accentSoft, vien: accent },
+      { tien: '500.000₫', luot: '~12 bài giảng', thuong: true,  nhan: 'Tặng 10%',  nen: '#FFFFFF',  vien: 'rgba(13,15,20,0.1)' }
+    ];
+
+    const MONO = "'IBM Plex Mono', monospace";
+    const SANS = "'Be Vietnam Pro', sans-serif";
+    const stk = [
+      { nhan: 'Ngân hàng',  giaTri: '[TÊN NGÂN HÀNG]',  font: SANS, spacing: 'normal' },
+      { nhan: 'Số tài khoản', giaTri: '[SỐ TÀI KHOẢN]', font: MONO, spacing: '0.04em' },
+      { nhan: 'Chủ tài khoản', giaTri: '[TÊN CHỦ TK]',  font: SANS, spacing: 'normal' },
+      { nhan: 'Số tiền',     giaTri: '300.000₫',        font: MONO, spacing: 'normal' },
+      { nhan: 'Nội dung CK', giaTri: 'TT HL8421',       font: MONO, spacing: '0.06em' }
+    ];
+
+    // Mẫu QR minh hoạ — không phải mã quét được
+    const qr = [];
+    const grid = 25;
+    const finder = (ox, oy) => {
+      for (let y = 0; y < 7; y++) for (let x = 0; x < 7; x++) {
+        const edge = x === 0 || y === 0 || x === 6 || y === 6;
+        const core = x >= 2 && x <= 4 && y >= 2 && y <= 4;
+        if (edge || core) qr.push({ x: ox + x, y: oy + y });
+      }
+    };
+    finder(0, 0); finder(18, 0); finder(0, 18);
+    let seed = 20260826;
+    const rand = () => { seed = (seed * 1103515245 + 12345) % 2147483648; return seed / 2147483648; };
+    const inFinder = (x, y) =>
+      (x < 8 && y < 8) || (x > 16 && y < 8) || (x < 8 && y > 16);
+    for (let y = 0; y < grid; y++) {
+      for (let x = 0; x < grid; x++) {
+        if (inFinder(x, y)) continue;
+        if (rand() > 0.55) qr.push({ x, y });
+      }
+    }
+
+    const quyDoi = [
+      { ten: 'Bài giảng PowerPoint · 45.000₫', so: '7',  phanTram: '100%' },
+      { ten: 'Bài giảng từ mẫu · 15.000₫',     so: '22', phanTram: '78%' },
+      { ten: 'Đề kiểm tra · 12.000₫',          so: '28', phanTram: '62%' },
+      { ten: 'Phiếu bài tập · 9.000₫',         so: '38', phanTram: '52%' }
+    ];
+
+    const camKet = [
+      'Tiền không hết hạn, không tự động gia hạn',
+      'Chạy lỗi được hoàn lại vào tài khoản trong 24 giờ',
+      'Xuất hoá đơn nếu cần — nhắn Zalo hỗ trợ'
+    ];
+
+    return { accent, accentSoft, accentLine, goi, stk, qr, quyDoi, camKet };
+  }
+}
+</script>
+</body>
+</html>

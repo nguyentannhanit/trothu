@@ -1,0 +1,6 @@
+# Thu khong can de dung web. Bo bot cho moi lan deploy nhe di.
+# vendor/ppt-master (67 MB) chi dung khi nap skill len Managed Agents
+# bang scripts/setup-agents.ts — chay o may, khong chay tren Vercel.
+vendor
+design
+docs

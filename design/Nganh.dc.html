@@ -1,0 +1,214 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <style>
+    body { margin: 0; font-family: 'Be Vietnam Pro', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    * { box-sizing: border-box; }
+    a { color: #0D0F14; text-decoration: none; }
+    a:hover { color: #00785F; }
+  </style>
+</helmet>
+
+<div style="width: 1280px; background: #F7F7F8; color: #0D0F14;">
+
+  <!-- Nav -->
+  <div style="display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0 64px; border-bottom: 1px solid rgba(13,15,20,0.07); background: #FFFFFF;">
+    <div style="display: flex; align-items: center; gap: 40px;">
+      <div style="display: flex; align-items: center; gap: 9px;">
+        <span style="display: inline-flex; width: 28px; height: 28px; align-items: center; justify-content: center; border-radius: 8px; background: {{accent}};">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h9M4 12h16M4 17h6"/></svg>
+        </span>
+        <span style="font-size: 16px; font-weight: 700; letter-spacing: -0.02em;">Trợ Thủ</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 26px; font-size: 14px; font-weight: 500; color: #464C57;">
+        <span style="color: #0D0F14; font-weight: 600;">Công cụ</span><span>Bảng giá</span><span>Hướng dẫn</span>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <span style="font-size: 14px; font-weight: 500; color: #464C57;">Đăng nhập</span>
+      <button style="font-family: inherit; font-size: 14px; font-weight: 600; color: #FFFFFF; background: #0D0F14; border: none; border-radius: 9px; height: 36px; padding: 0 16px; cursor: pointer;">Dùng thử miễn phí</button>
+    </div>
+  </div>
+
+  <!-- Đầu trang -->
+  <div style="padding: 40px 64px 44px;">
+    <div style="display: flex; align-items: center; gap: 8px; font-size: 13.5px; color: #868C97; margin-bottom: 20px;">
+      <span>Trang chủ</span>
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C4C8CE" stroke-width="2.2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>
+      <span style="color: #0D0F14; font-weight: 500;">Giáo dục</span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 60px; align-items: start;">
+      <div>
+        <h1 style="margin: 0 0 18px; font-size: 42px; line-height: 1.12; font-weight: 800; letter-spacing: -0.035em; text-wrap: balance;">Công cụ soạn bài giảng<br>và hồ sơ dạy học</h1>
+        <p style="margin: 0 0 14px; font-size: 16.5px; line-height: 1.7; color: #464C57;">Sáu công cụ dành riêng cho giáo viên phổ thông Việt Nam: bài giảng điện tử, đề kiểm tra, phiếu bài tập, kế hoạch bài dạy. Tất cả bám khung Chương trình giáo dục phổ thông 2018 và ba bộ sách hiện hành.</p>
+        <p style="margin: 0; font-size: 16.5px; line-height: 1.7; color: #464C57;">Đầu ra là file <strong style="font-weight: 600;">.pptx</strong> và <strong style="font-weight: 600;">.docx</strong> gốc — mở bằng PowerPoint hoặc Word có sẵn trên máy, sửa được từng chữ, từng hình. Không phải ảnh, không phải PDF khoá, không cần cài thêm phần mềm nào.</p>
+      </div>
+
+      <div style="background: #FFFFFF; border: 1px solid rgba(13,15,20,0.08); border-radius: 16px; padding: 22px;">
+        <div style="font-size: 14.5px; font-weight: 650; margin-bottom: 15px;">Ngành Giáo dục trên Trợ Thủ</div>
+        <div style="display: flex; flex-direction: column; gap: 13px;">
+          <sc-for list="{{soLieu}}" as="s" hint-placeholder-count="3">
+            <div style="display: flex; align-items: baseline; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid rgba(13,15,20,0.06);">
+              <span style="font-size: 13.5px; color: #6B7280;">{{s.ten}}</span>
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 15px; font-weight: 600;">{{s.giaTri}}</span>
+            </div>
+          </sc-for>
+        </div>
+        <button style="width: 100%; font-family: inherit; font-size: 14px; font-weight: 600; color: #FFFFFF; background: {{accent}}; border: none; border-radius: 10px; height: 42px; cursor: pointer; margin-top: 16px;">Làm thử bài đầu — miễn phí</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Danh sách công cụ -->
+  <div style="padding: 0 64px 52px;">
+    <h2 style="margin: 0 0 18px; font-size: 25px; font-weight: 700; letter-spacing: -0.025em;">Sáu công cụ cho giáo viên</h2>
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <sc-for list="{{congCu}}" as="c" hint-placeholder-count="5">
+        <div style="display: grid; grid-template-columns: 46px 1fr 190px 132px; gap: 22px; align-items: center; background: #FFFFFF; border: 1px solid rgba(13,15,20,0.08); border-radius: 14px; padding: 20px 22px;">
+          <span style="display: inline-flex; width: 46px; height: 46px; align-items: center; justify-content: center; border-radius: 12px; background: {{c.extNen}};">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 500; color: {{c.extMuc}};">{{c.ext}}</span>
+          </span>
+          <div>
+            <div style="font-size: 17px; font-weight: 650; letter-spacing: -0.015em; margin-bottom: 5px;">{{c.ten}}</div>
+            <div style="font-size: 14px; line-height: 1.55; color: #6B7280; max-width: 62ch;">{{c.moTa}}</div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <span style="font-size: 13px; color: #868C97;">{{c.thoiGian}}</span>
+            <span style="font-size: 17px; font-weight: 700; letter-spacing: -0.02em;">{{c.gia}}</span>
+          </div>
+          <button style="font-family: inherit; font-size: 14px; font-weight: 600; color: #0D0F14; background: #F1F2F4; border: none; border-radius: 10px; height: 42px; cursor: pointer;">Dùng ngay</button>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- Theo cấp học — liên kết nội bộ cho SEO -->
+  <div style="padding: 0 64px 52px;">
+    <h2 style="margin: 0 0 6px; font-size: 25px; font-weight: 700; letter-spacing: -0.025em;">Chọn theo cấp học và môn</h2>
+    <p style="margin: 0 0 20px; font-size: 15px; color: #6B7280;">Mỗi môn có một trang riêng với mẫu bài giảng và bố cục hợp với đặc thù môn đó.</p>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px;">
+      <sc-for list="{{capHoc}}" as="k" hint-placeholder-count="3">
+        <div style="background: #FFFFFF; border: 1px solid rgba(13,15,20,0.08); border-radius: 14px; padding: 22px;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 15px;">
+            <span style="font-size: 16.5px; font-weight: 650; letter-spacing: -0.015em;">{{k.ten}}</span>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #A0A5AE;">{{k.lop}}</span>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 7px;">
+            <sc-for list="{{k.mon}}" as="m" hint-placeholder-count="8">
+              <a href="#" style="font-size: 13px; color: #464C57; background: #F4F5F6; border-radius: 999px; padding: 6px 12px;">{{m}}</a>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- Câu hỏi — nội dung SEO đuôi dài -->
+  <div style="padding: 0 64px 52px;">
+    <h2 style="margin: 0 0 20px; font-size: 25px; font-weight: 700; letter-spacing: -0.025em;">Giáo viên hỏi gì trước khi dùng</h2>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+      <sc-for list="{{hoi}}" as="h" hint-placeholder-count="6">
+        <div style="background: #FFFFFF; border: 1px solid rgba(13,15,20,0.08); border-radius: 14px; padding: 20px 22px;">
+          <div style="font-size: 15.5px; font-weight: 650; letter-spacing: -0.01em; margin-bottom: 8px;">{{h.q}}</div>
+          <div style="font-size: 14px; line-height: 1.65; color: #464C57;">{{h.a}}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- Dải kết -->
+  <div style="margin: 0 64px 52px; background: #0D0F14; color: #FFFFFF; border-radius: 20px; padding: 44px 48px; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 48px; align-items: center;">
+    <div>
+      <h2 style="margin: 0 0 12px; font-size: 30px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.15;">Soạn thử một bài, không mất tiền</h2>
+      <p style="margin: 0; font-size: 15.5px; line-height: 1.7; color: rgba(255,255,255,0.62); max-width: 48ch;">Bài giảng đầu tiên miễn phí. Tải file về, mở trong PowerPoint, sửa thử vài chữ — thấy dùng được rồi hãy nạp tiền.</p>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <button style="width: 100%; font-family: inherit; font-size: 15px; font-weight: 600; color: #0D0F14; background: #FFFFFF; border: none; border-radius: 11px; height: 48px; cursor: pointer;">Soạn bài giảng đầu tiên</button>
+      <button style="width: 100%; font-family: inherit; font-size: 14.5px; font-weight: 500; color: #FFFFFF; background: transparent; border: 1px solid rgba(255,255,255,0.22); border-radius: 11px; height: 48px; cursor: pointer;">Xem bài giảng mẫu</button>
+    </div>
+  </div>
+
+  <!-- Chân trang -->
+  <div style="border-top: 1px solid rgba(13,15,20,0.08); padding: 36px 64px 46px;">
+    <div style="font-size: 13px; color: #868C97; margin-bottom: 12px;">Tìm nhiều nhất trong ngành Giáo dục</div>
+    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+      <sc-for list="{{tuKhoa}}" as="t" hint-placeholder-count="10">
+        <a href="#" style="font-size: 13px; color: #6B7280; border: 1px solid rgba(13,15,20,0.09); border-radius: 999px; padding: 6px 13px;">{{t}}</a>
+      </sc-for>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"accent":{"editor":"color","default":"#00785F","options":["#00785F","#1F4FD8","#0D0F14","#B4460A"]}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const accent = this.props.accent ?? '#00785F';
+
+    const soLieu = [
+      { ten: 'Công cụ', giaTri: '6' },
+      { ten: 'Rẻ nhất', giaTri: '9.000₫' },
+      { ten: 'Bài giảng đã tạo', giaTri: '[N]' }
+    ];
+
+    const P = { ext: 'PPTX', extNen: '#F9EAE6', extMuc: '#B7472A' };
+    const W = { ext: 'DOCX', extNen: '#E8EEF7', extMuc: '#2B579A' };
+
+    const congCu = [
+      { ...P, ten: 'Tạo bài giảng PowerPoint', thoiGian: '10–20 phút', gia: '45.000₫',
+        moTa: 'Đưa giáo án Word có sẵn, hoặc chỉ gõ tên bài. Nhận deck 10–15 trang có hình minh hoạ, bảng, sơ đồ và ghi chú cho giáo viên ở phần Speaker Notes.' },
+      { ...W, ten: 'Soạn đề kiểm tra', thoiGian: '4–8 phút', gia: '12.000₫',
+        moTa: 'Ma trận đề theo bốn mức nhận thức, đề chính thức, đáp án và hướng dẫn chấm. Chọn được 15 phút, 45 phút hoặc đề học kỳ.' },
+      { ...W, ten: 'Phiếu bài tập phân hoá', thoiGian: '3–6 phút', gia: '9.000₫',
+        moTa: 'Cùng một nội dung chia làm ba mức cho ba nhóm học sinh trong lớp. Dàn sẵn khổ A4, in ra là phát được.' },
+      { ...W, ten: 'Kế hoạch bài dạy', thoiGian: '3–5 phút', gia: '10.000₫',
+        moTa: 'Giáo án theo mẫu Công văn 5512: mục tiêu, thiết bị, tiến trình bốn hoạt động, dự kiến sản phẩm học sinh.' },
+      { ...P, ten: 'Bài giảng từ mẫu có sẵn', thoiGian: '4–7 phút', gia: '15.000₫',
+        moTa: 'Chọn một mẫu bài giảng dựng sẵn của Trợ Thủ, điền nội dung bài của cô vào. Rẻ hơn vì không phải vẽ lại bố cục từ đầu.' },
+      { ...P, ten: 'Làm đẹp bài giảng cũ', thoiGian: '6–12 phút', gia: '32.000₫',
+        moTa: 'Đưa file .pptx cũ của cô. Giữ nguyên nội dung, dựng lại bố cục, phông chữ và màu cho gọn và dễ nhìn hơn.' }
+    ];
+
+    const capHoc = [
+      { ten: 'Tiểu học', lop: 'Lớp 1–5', mon: ['Toán', 'Tiếng Việt', 'Tự nhiên và Xã hội', 'Đạo đức', 'Khoa học', 'Lịch sử và Địa lí', 'Tin học', 'Công nghệ'] },
+      { ten: 'THCS', lop: 'Lớp 6–9', mon: ['Toán', 'Ngữ văn', 'Khoa học tự nhiên', 'Lịch sử và Địa lí', 'Tiếng Anh', 'GDCD', 'Tin học', 'Công nghệ', 'Âm nhạc', 'Mĩ thuật'] },
+      { ten: 'THPT', lop: 'Lớp 10–12', mon: ['Toán', 'Ngữ văn', 'Vật lí', 'Hoá học', 'Sinh học', 'Lịch sử', 'Địa lí', 'Tiếng Anh', 'Tin học', 'Giáo dục kinh tế và pháp luật'] }
+    ];
+
+    const hoi = [
+      { q: 'Bài giảng có sửa được trong PowerPoint không?',
+        a: 'Được, và đây là điểm khác biệt chính. Mỗi dòng chữ, mỗi hình khối trong file là một đối tượng PowerPoint thật — bấm vào là sửa được, đổi màu được, kéo đi chỗ khác được. Không phải ảnh chụp ghép lại.' },
+      { q: 'Có bám theo sách giáo khoa đang dùng không?',
+        a: 'Cô chọn bộ sách khi tạo bài. Nếu tải giáo án của cô lên thì công cụ bám theo đúng nội dung trong đó, không tự bịa thêm phần ngoài bài.' },
+      { q: 'Máy tính ở trường cấu hình yếu có chạy được không?',
+        a: 'Được. Toàn bộ phần nặng chạy trên máy chủ, máy của cô chỉ mở trình duyệt. Bấm tạo xong có thể tắt máy, lúc quay lại file đã sẵn ở đó.' },
+      { q: 'Một bài giảng mất bao lâu?',
+        a: 'Khoảng 10 đến 20 phút cho bài 13 trang. Có hiển thị đang làm tới bước nào và còn bao lâu. Nếu đông người dùng cùng lúc thì phải xếp hàng, trang sẽ nói rõ trước bao nhiêu việc.' },
+      { q: 'Giáo án của tôi tải lên có bị dùng vào việc khác không?',
+        a: 'Không. File nguồn bị xoá sau [SỐ] ngày, không dùng để huấn luyện mô hình, không chia sẻ cho bên thứ ba. Chính sách đầy đủ ở trang Chính sách dữ liệu.' },
+      { q: 'Nếu bài giảng ra không dùng được thì sao?',
+        a: 'Báo lỗi trong 24 giờ, tiền hoàn lại vào tài khoản, không cần giải thích. Cô cũng có thể yêu cầu vẽ lại riêng một trang mà không mất thêm tiền.' }
+    ];
+
+    const tuKhoa = [
+      'bài giảng điện tử lớp 5', 'giáo án powerpoint ngữ văn 8', 'đề kiểm tra giữa kỳ toán 7',
+      'kế hoạch bài dạy 5512', 'phiếu bài tập tiếng việt lớp 3', 'slide bài giảng đẹp',
+      'giáo án chương trình 2018', 'làm powerpoint bài giảng nhanh', 'ma trận đề kiểm tra',
+      'bài giảng lịch sử địa lí lớp 6'
+    ];
+
+    return { accent, soLieu, congCu, capHoc, hoi, tuKhoa };
+  }
+}
+</script>
+</body>
+</html>

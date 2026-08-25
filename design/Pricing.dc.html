@@ -1,0 +1,206 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <style>
+    body { margin: 0; font-family: 'Be Vietnam Pro', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    * { box-sizing: border-box; }
+    a { color: #0D0F14; text-decoration: none; }
+    a:hover { color: #00785F; }
+  </style>
+</helmet>
+
+<div style="width: 1280px; background: #F7F7F8; color: #0D0F14;">
+
+  <div style="display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0 64px; border-bottom: 1px solid rgba(13,15,20,0.07); background: #FFFFFF;">
+    <div style="display: flex; align-items: center; gap: 40px;">
+      <div style="display: flex; align-items: center; gap: 9px;">
+        <span style="display: inline-flex; width: 28px; height: 28px; align-items: center; justify-content: center; border-radius: 8px; background: {{accent}};">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h9M4 12h16M4 17h6"/></svg>
+        </span>
+        <span style="font-size: 16px; font-weight: 700; letter-spacing: -0.02em;">Trợ Thủ</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 26px; font-size: 14px; font-weight: 500; color: #464C57;">
+        <span>Công cụ</span><span style="color: #0D0F14; font-weight: 600;">Bảng giá</span><span>Hướng dẫn</span>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <span style="font-size: 14px; font-weight: 500; color: #464C57;">Đăng nhập</span>
+      <button style="font-family: inherit; font-size: 14px; font-weight: 600; color: #FFFFFF; background: #0D0F14; border: none; border-radius: 9px; height: 36px; padding: 0 16px; cursor: pointer;">Dùng thử miễn phí</button>
+    </div>
+  </div>
+
+  <!-- Đầu trang -->
+  <div style="padding: 56px 64px 40px; text-align: center;">
+    <h1 style="margin: 0 auto 14px; font-size: 44px; line-height: 1.1; font-weight: 800; letter-spacing: -0.035em; max-width: 22ch;">Trả theo lượt dùng.<br>Không thuê bao.</h1>
+    <p style="margin: 0 auto; font-size: 17px; line-height: 1.65; color: #464C57; max-width: 62ch;">Nạp tiền vào tài khoản, mỗi lần tạo trừ đúng số ghi sẵn. Tiền không hết hạn, không tự động gia hạn, dùng chung cho mọi công cụ ở cả 5 ngành.</p>
+  </div>
+
+  <!-- Gói nạp -->
+  <div style="padding: 0 64px 56px;">
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px;">
+      <sc-for list="{{goi}}" as="g" hint-placeholder-count="4">
+        <div style="position: relative; background: {{g.nen}}; border: 1.5px solid {{g.vien}}; border-radius: 16px; padding: 26px 24px 24px;">
+          <sc-if value="{{g.thuong}}" hint-placeholder-val="{{true}}">
+            <div style="position: absolute; top: -11px; left: 24px; font-size: 11.5px; font-weight: 600; color: #FFFFFF; background: {{accent}}; border-radius: 999px; padding: 4px 11px;">{{g.nhan}}</div>
+          </sc-if>
+          <div style="font-size: 13.5px; font-weight: 600; color: #6B7280; margin-bottom: 10px;">{{g.ten}}</div>
+          <div style="display: flex; align-items: baseline; gap: 6px; margin-bottom: 6px;">
+            <span style="font-size: 30px; font-weight: 700; letter-spacing: -0.035em;">{{g.tien}}</span>
+          </div>
+          <div style="font-size: 13.5px; color: #6B7280; margin-bottom: 20px;">Vào tài khoản <strong style="color: #0D0F14; font-weight: 600;">{{g.nhan_duoc}}</strong></div>
+          <div style="display: flex; flex-direction: column; gap: 9px; margin-bottom: 22px;">
+            <sc-for list="{{g.vd}}" as="v" hint-placeholder-count="2">
+              <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #464C57;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M20 6L9 17l-5-5"/></svg>
+                {{v}}
+              </div>
+            </sc-for>
+          </div>
+          <button style="width: 100%; font-family: inherit; font-size: 14px; font-weight: 600; color: {{g.nutMuc}}; background: {{g.nutNen}}; border: {{g.nutVien}}; border-radius: 10px; height: 42px; cursor: pointer;">Nạp {{g.tien}}</button>
+        </div>
+      </sc-for>
+    </div>
+    <div style="text-align: center; font-size: 13.5px; color: #868C97; margin-top: 18px;">Bài giảng đầu tiên miễn phí — không cần nạp gì để thử.</div>
+  </div>
+
+  <!-- Bảng giá từng công cụ -->
+  <div style="padding: 0 64px 56px;">
+    <h2 style="margin: 0 0 6px; font-size: 27px; font-weight: 700; letter-spacing: -0.028em;">Giá từng công cụ</h2>
+    <p style="margin: 0 0 22px; font-size: 15px; color: #6B7280;">Giá cố định cho một lần tạo. Chạy hỏng được hoàn lại vào tài khoản.</p>
+
+    <div style="background: #FFFFFF; border: 1px solid rgba(13,15,20,0.08); border-radius: 16px; overflow: hidden;">
+      <div style="display: grid; grid-template-columns: 1fr 130px 130px 120px; gap: 20px; padding: 13px 24px; background: #FAFAFB; border-bottom: 1px solid rgba(13,15,20,0.07); font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.07em; color: #A0A5AE;">
+        <div>CÔNG CỤ</div><div>ĐẦU RA</div><div>THỜI GIAN</div><div style="text-align: right;">GIÁ / LẦN</div>
+      </div>
+      <sc-for list="{{bang}}" as="b" hint-placeholder-count="14">
+        <sc-if value="{{b.laNhom}}" hint-placeholder-val="{{true}}">
+          <div style="padding: 14px 24px 8px; background: #FCFCFD; border-bottom: 1px solid rgba(13,15,20,0.05);">
+            <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 700; letter-spacing: 0.03em; color: #464C57;">
+              <span style="width: 7px; height: 7px; border-radius: 2px; background: {{b.mau}};"></span>{{b.ten}}
+            </span>
+          </div>
+        </sc-if>
+        <sc-if value="{{b.laDong}}" hint-placeholder-val="{{true}}">
+          <div style="display: grid; grid-template-columns: 1fr 130px 130px 120px; gap: 20px; padding: 14px 24px; border-bottom: 1px solid rgba(13,15,20,0.05); align-items: center;">
+            <div>
+              <div style="font-size: 15px; font-weight: 500;">{{b.ten}}</div>
+              <div style="font-size: 12.5px; color: #868C97; margin-top: 2px;">{{b.moTa}}</div>
+            </div>
+            <div><span style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; font-weight: 500; color: {{b.extMuc}}; background: {{b.extNen}}; border-radius: 5px; padding: 4px 6px;">{{b.ext}}</span></div>
+            <div style="font-size: 13px; color: #6B7280;">{{b.thoiGian}}</div>
+            <div style="text-align: right; font-size: 16px; font-weight: 700; letter-spacing: -0.02em;">{{b.gia}}</div>
+          </div>
+        </sc-if>
+      </sc-for>
+    </div>
+
+    <div style="display: flex; align-items: flex-start; gap: 10px; margin-top: 14px; background: #FFFFFF; border: 1px solid rgba(13,15,20,0.08); border-radius: 12px; padding: 15px 18px;">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#868C97" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 1px;"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+      <div style="font-size: 13.5px; line-height: 1.6; color: #464C57;">Một số công cụ có tuỳ chọn làm tăng giá — ví dụ bài giảng có <strong style="font-weight: 600;">hình minh hoạ vẽ riêng</strong> cộng thêm 8.000₫. Màn hình tạo luôn hiện tổng tiền và số dư còn lại trước khi bấm.</div>
+    </div>
+  </div>
+
+  <!-- Câu hỏi về giá -->
+  <div style="padding: 0 64px 56px;">
+    <h2 style="margin: 0 0 20px; font-size: 27px; font-weight: 700; letter-spacing: -0.028em;">Câu hỏi về tiền</h2>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+      <sc-for list="{{hoi}}" as="h" hint-placeholder-count="6">
+        <div style="background: #FFFFFF; border: 1px solid rgba(13,15,20,0.08); border-radius: 14px; padding: 20px 22px;">
+          <div style="font-size: 15.5px; font-weight: 650; letter-spacing: -0.01em; margin-bottom: 8px;">{{h.q}}</div>
+          <div style="font-size: 14px; line-height: 1.65; color: #464C57;">{{h.a}}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="border-top: 1px solid rgba(13,15,20,0.08); padding: 36px 64px 46px; text-align: center;">
+    <div style="font-size: 13.5px; color: #868C97;">Giá đã gồm thuế · Xuất hoá đơn theo yêu cầu · [TÊN HỘ KINH DOANH] · MST [MÃ SỐ THUẾ]</div>
+  </div>
+
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"accent":{"editor":"color","default":"#00785F","options":["#00785F","#1F4FD8","#0D0F14","#B4460A"]}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const accent = this.props.accent ?? '#00785F';
+    const accentSoft = 'color-mix(in srgb, ' + accent + ' 7%, #FFFFFF)';
+
+    const goi = [
+      { ten: 'Dùng thử', tien: '50.000₫', nhan_duoc: '50.000₫', thuong: false, nhan: '',
+        vd: ['1 bài giảng', 'hoặc 5 phiếu bài tập'], nen: '#FFFFFF', vien: 'rgba(13,15,20,0.1)',
+        nutNen: '#F1F2F4', nutMuc: '#0D0F14', nutVien: 'none' },
+      { ten: 'Một tháng dạy', tien: '100.000₫', nhan_duoc: '100.000₫', thuong: false, nhan: '',
+        vd: ['2 bài giảng', 'hoặc 8 đề kiểm tra'], nen: '#FFFFFF', vien: 'rgba(13,15,20,0.1)',
+        nutNen: '#F1F2F4', nutMuc: '#0D0F14', nutVien: 'none' },
+      { ten: 'Một học kỳ', tien: '300.000₫', nhan_duoc: '315.000₫', thuong: true, nhan: 'Tặng 5% — hay chọn nhất',
+        vd: ['7 bài giảng', 'hoặc 21 mẫu có sẵn'], nen: accentSoft, vien: accent,
+        nutNen: accent, nutMuc: '#FFFFFF', nutVien: 'none' },
+      { ten: 'Cả năm học', tien: '500.000₫', nhan_duoc: '550.000₫', thuong: true, nhan: 'Tặng 10%',
+        vd: ['12 bài giảng', 'hoặc 35 mẫu có sẵn'], nen: '#FFFFFF', vien: 'rgba(13,15,20,0.1)',
+        nutNen: '#F1F2F4', nutMuc: '#0D0F14', nutVien: 'none' }
+    ];
+
+    const P = { ext: 'PPTX', extNen: '#F9EAE6', extMuc: '#B7472A' };
+    const W = { ext: 'DOCX', extNen: '#E8EEF7', extMuc: '#2B579A' };
+    const X = { ext: 'XLSX', extNen: '#E6F1EA', extMuc: '#1F6F43' };
+    const nhom = (ten, mau) => ({ laNhom: true, laDong: false, ten, mau });
+    const dong = (kind, ten, moTa, thoiGian, gia) => ({ laNhom: false, laDong: true, ten, moTa, thoiGian, gia, ...kind });
+
+    const bang = [
+      nhom('GIÁO DỤC', '#2F6B4F'),
+      dong(P, 'Tạo bài giảng PowerPoint', 'Deck 10–15 trang từ giáo án hoặc chủ đề', '10–20 phút', '45.000₫'),
+      dong(P, 'Bài giảng từ mẫu có sẵn', 'Điền nội dung vào mẫu dựng sẵn — rẻ hơn vì không vẽ lại bố cục', '4–7 phút', '15.000₫'),
+      dong(P, 'Làm đẹp bài giảng cũ', 'Giữ nội dung, dựng lại bố cục và màu', '6–12 phút', '32.000₫'),
+      dong(W, 'Soạn đề kiểm tra', 'Ma trận đề, đáp án, hướng dẫn chấm', '4–8 phút', '12.000₫'),
+      dong(W, 'Kế hoạch bài dạy', 'Giáo án theo mẫu Công văn 5512', '3–5 phút', '10.000₫'),
+      dong(W, 'Phiếu bài tập phân hoá', 'Ba mức độ, dàn sẵn khổ A4', '3–6 phút', '9.000₫'),
+
+      nhom('KẾ TOÁN / TÀI CHÍNH', '#1F4E79'),
+      dong(W, 'Báo cáo tài chính', 'Thuyết minh biến động theo kỳ', '4–7 phút', '14.000₫'),
+      dong(X, 'Đối soát sao kê', 'Khớp sao kê với sổ quỹ, chỉ ra khoản lệch', '2–5 phút', '12.000₫'),
+      dong(X, 'Bảng lương tháng', 'Lương, BHXH, thuế TNCN từ chấm công', '2–4 phút', '10.000₫'),
+
+      nhom('XÂY DỰNG / KỸ THUẬT', '#B26A1F'),
+      dong(W, 'Báo cáo tiến độ tuần', 'Gộp nhật ký công trường gửi chủ đầu tư', '5–9 phút', '13.000₫'),
+      dong(W, 'Thuyết minh dự toán', 'Diễn giải khối lượng và đơn giá', '4–8 phút', '13.000₫'),
+      dong(W, 'Biên bản nghiệm thu', 'Điền theo mẫu chuẩn, đúng trình tự hồ sơ', '3–6 phút', '11.000₫'),
+
+      nhom('BÁN HÀNG / MARKETING', '#8A3341'),
+      dong(X, 'Báo giá gửi khách', 'Có logo, điều khoản, hiệu lực', '1–3 phút', '6.000₫'),
+      dong(W, 'Kịch bản video ngắn', 'Hook, phân cảnh, lời thoại', '1–3 phút', '5.000₫'),
+      dong(W, 'Bài đăng Fanpage', 'Một chủ đề thành 5 bài khác góc nhìn', '1–2 phút', '5.000₫'),
+
+      nhom('NHÂN SỰ / HÀNH CHÍNH', '#4A4A6A'),
+      dong(W, 'Hợp đồng lao động', 'Theo Bộ luật Lao động 2019', '2–4 phút', '8.000₫'),
+      dong(W, 'Mô tả công việc', 'Yêu cầu, quyền lợi, khung năng lực', '1–2 phút', '5.000₫')
+    ];
+
+    const hoi = [
+      { q: 'Tiền nạp có hết hạn không?',
+        a: 'Không. Tiền nằm trong tài khoản cho tới khi dùng hết. Không có gói tháng, không tự động trừ tiền, không cần nhớ huỷ.' },
+      { q: 'Tạo ra không dùng được thì sao?',
+        a: 'Báo lỗi trong 24 giờ là hoàn lại đầy đủ vào tài khoản, không cần giải thích. Nếu chỉ hỏng một trang thì yêu cầu vẽ lại riêng trang đó, miễn phí.' },
+      { q: 'Có rút tiền ra được không?',
+        a: 'Không rút ra tiền mặt. Trước khi nạp mức lớn, nên nạp 50.000₫ làm thử vài bài xem có hợp không đã.' },
+      { q: 'Trả bằng cách nào?',
+        a: 'Chuyển khoản ngân hàng bằng mã QR — tiền vào tài khoản trong khoảng 1 phút, không mất phí. Hoặc ví MoMo.' },
+      { q: 'Có hoá đơn cho trường không?',
+        a: 'Có. Nhắn Zalo hỗ trợ kèm thông tin đơn vị, chúng tôi xuất hoá đơn cho phần đã nạp.' },
+      { q: 'Vì sao mỗi công cụ một giá khác nhau?',
+        a: 'Vì chi phí máy tính khác nhau thật. Bài giảng phải vẽ từng trang nên tốn hơn nhiều so với soạn một phiếu bài tập bằng chữ. Giá ở đây bám theo chi phí thật, không phải đặt bừa.' }
+    ];
+
+    return { accent, goi, bang, hoi };
+  }
+}
+</script>
+</body>
+</html>

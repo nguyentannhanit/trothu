@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <style>
+    body { margin: 0; font-family: 'Be Vietnam Pro', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    * { box-sizing: border-box; }
+    a { color: #0D0F14; text-decoration: none; }
+    a:hover { color: #00785F; }
+  </style>
+</helmet>
+
+<div style="width: 1280px; height: 820px; background: #F7F7F8; color: #0D0F14; display: grid; grid-template-columns: 1.05fr 0.95fr;">
+
+  <!-- ══ Trái: lý do ══ -->
+  <div style="background: #0D0F14; color: #FFFFFF; padding: 52px 56px; display: flex; flex-direction: column;">
+    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 52px;">
+      <span style="display: inline-flex; width: 30px; height: 30px; align-items: center; justify-content: center; border-radius: 8px; background: {{accent}};">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h9M4 12h16M4 17h6"/></svg>
+      </span>
+      <span style="font-size: 17px; font-weight: 700; letter-spacing: -0.02em;">Trợ Thủ</span>
+    </div>
+
+    <h2 style="margin: 0 0 16px; font-size: 32px; line-height: 1.18; font-weight: 700; letter-spacing: -0.03em;">Bài giảng đầu tiên<br>không mất tiền.</h2>
+    <p style="margin: 0 0 40px; font-size: 15.5px; line-height: 1.7; color: rgba(255,255,255,0.6); max-width: 42ch;">Đăng nhập là dùng được ngay. Không cần thẻ ngân hàng, không tự động gia hạn, không có gói dùng thử hết hạn.</p>
+
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+      <sc-for list="{{lyDo}}" as="l" hint-placeholder-count="3">
+        <div style="display: flex; align-items: flex-start; gap: 13px;">
+          <span style="display: inline-flex; width: 34px; height: 34px; align-items: center; justify-content: center; border-radius: 10px; background: rgba(255,255,255,0.07); flex-shrink: 0;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="{{accent2}}" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="{{l.icon}}"/></svg>
+          </span>
+          <div>
+            <div style="font-size: 15px; font-weight: 600; margin-bottom: 4px;">{{l.ten}}</div>
+            <div style="font-size: 13.5px; line-height: 1.6; color: rgba(255,255,255,0.55);">{{l.moTa}}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="flex-grow: 1;"></div>
+
+    <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 22px; display: flex; align-items: center; gap: 26px;">
+      <sc-for list="{{soLieu}}" as="s" hint-placeholder-count="3">
+        <div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 19px; font-weight: 500; margin-bottom: 3px;">{{s.so}}</div>
+          <div style="font-size: 12.5px; color: rgba(255,255,255,0.45);">{{s.ten}}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- ══ Phải: form ══ -->
+  <div style="display: flex; align-items: center; justify-content: center; padding: 52px;">
+    <div style="width: 100%; max-width: 396px;">
+
+      <h1 style="margin: 0 0 6px; font-size: 27px; font-weight: 700; letter-spacing: -0.03em;">Đăng nhập</h1>
+      <p style="margin: 0 0 28px; font-size: 14.5px; color: #6B7280;">Chưa có tài khoản? <a href="#" style="color: {{accent}}; font-weight: 500;">Tạo tài khoản mới</a></p>
+
+      <button style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 11px; font-family: inherit; font-size: 15px; font-weight: 600; color: #0D0F14; background: #FFFFFF; border: 1px solid rgba(13,15,20,0.13); border-radius: 11px; height: 50px; cursor: pointer; margin-bottom: 10px;">
+        <svg width="19" height="19" viewBox="0 0 24 24"><path fill="#4285F4" d="M22 12.2c0-.7-.06-1.4-.18-2.05H12v3.88h5.62a4.8 4.8 0 0 1-2.08 3.15v2.6h3.36C20.87 18 22 15.36 22 12.2z"/><path fill="#34A853" d="M12 22.5c2.82 0 5.18-.93 6.9-2.53l-3.36-2.6c-.94.63-2.14 1-3.54 1-2.72 0-5.03-1.83-5.85-4.3H2.68v2.7A10.44 10.44 0 0 0 12 22.5z"/><path fill="#FBBC05" d="M6.15 14.07a6.2 6.2 0 0 1 0-3.99v-2.7H2.68a10.4 10.4 0 0 0 0 9.39l3.47-2.7z"/><path fill="#EA4335" d="M12 5.78c1.53 0 2.9.53 3.99 1.56l2.98-2.98C17.17 2.7 14.81 1.7 12 1.7a10.44 10.44 0 0 0-9.32 5.68l3.47 2.7c.82-2.47 3.13-4.3 5.85-4.3z"/></svg>
+        Tiếp tục với Google
+      </button>
+
+      <div style="display: flex; align-items: center; gap: 14px; margin: 20px 0;">
+        <span style="flex-grow: 1; height: 1px; background: rgba(13,15,20,0.09);"></span>
+        <span style="font-size: 12.5px; color: #A0A5AE;">hoặc</span>
+        <span style="flex-grow: 1; height: 1px; background: rgba(13,15,20,0.09);"></span>
+      </div>
+
+      <div style="margin-bottom: 12px;">
+        <div style="font-size: 13px; font-weight: 500; color: #464C57; margin-bottom: 7px;">Email</div>
+        <div style="display: flex; align-items: center; height: 50px; padding: 0 15px; background: #FFFFFF; border: 1px solid rgba(13,15,20,0.13); border-radius: 11px;">
+          <span style="font-size: 15px; color: #A0A5AE;">huonglan.thcs@gmail.com</span>
+        </div>
+      </div>
+
+      <button style="width: 100%; font-family: inherit; font-size: 15px; font-weight: 600; color: #FFFFFF; background: {{accent}}; border: none; border-radius: 11px; height: 50px; cursor: pointer; margin-bottom: 14px;">Gửi liên kết đăng nhập</button>
+
+      <div style="display: flex; align-items: flex-start; gap: 9px; background: #FFFFFF; border: 1px solid rgba(13,15,20,0.08); border-radius: 11px; padding: 13px 15px; margin-bottom: 22px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#868C97" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 1px;"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        <div style="font-size: 12.5px; line-height: 1.55; color: #6B7280;">Không cần nhớ mật khẩu. Trợ Thủ gửi một đường dẫn vào email, bấm vào là vào thẳng tài khoản.</div>
+      </div>
+
+      <div style="font-size: 12.5px; line-height: 1.6; color: #A0A5AE; text-align: center;">
+        Đăng nhập là đồng ý với <a href="#" style="color: #6B7280; text-decoration: underline;">Điều khoản sử dụng</a> và <a href="#" style="color: #6B7280; text-decoration: underline;">Chính sách dữ liệu</a>.
+      </div>
+
+    </div>
+  </div>
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"accent":{"editor":"color","default":"#00785F","options":["#00785F","#1F4FD8","#0D0F14","#B4460A"]}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const accent = this.props.accent ?? '#00785F';
+    const accent2 = 'color-mix(in srgb, ' + accent + ' 62%, #FFFFFF)';
+    const lyDo = [
+      { ten: 'File sửa được, không phải ảnh', moTa: 'Mở bằng PowerPoint và Word có sẵn trên máy, bấm vào từng chữ từng hình để sửa.',
+        icon: 'M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z' },
+      { ten: 'Biết giá trước khi bấm', moTa: 'Mỗi công cụ ghi rõ giá một lần dùng. Nạp bao nhiêu tiêu bấy nhiêu, tiền không hết hạn.',
+        icon: 'M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6' },
+      { ten: 'Giáo án của bạn không đi đâu cả', moTa: 'File tải lên bị xoá sau [SỐ] ngày, không dùng để huấn luyện, không chia sẻ cho ai.',
+        icon: 'M12 3l8 4v5c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10V7l8-4z' }
+    ];
+    const soLieu = [
+      { so: '14', ten: 'công cụ' },
+      { so: '5', ten: 'ngành nghề' },
+      { so: '[N]', ten: 'hồ sơ đã tạo' }
+    ];
+    return { accent, accent2, lyDo, soLieu };
+  }
+}
+</script>
+</body>
+</html>

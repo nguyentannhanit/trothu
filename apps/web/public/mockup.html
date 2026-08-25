@@ -1,0 +1,1908 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trợ Thủ — Design System & Homepage Mockup v2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Palette */
+      --bg: #F7F7F8;
+      --surface: #FFFFFF;
+      --surface-2: #FAFAFB;
+      --surface-3: #F1F2F4;
+      --surface-4: #EDEEF0;
+
+      --ink: #0D0F14;
+      --ink-2: #464C57;
+      --ink-3: #6B7280;
+      --ink-4: #868C97;
+      --ink-5: #A0A5AE;
+
+      --line: rgba(13, 15, 20, 0.08);
+      --line-strong: rgba(13, 15, 20, 0.14);
+
+      /* Brand Primary: Deep Teal Green */
+      --accent: #00785F;
+      --accent-hover: #00604C;
+      --accent-soft: #E6F2EF;
+      --accent-line: #B3D7CF;
+
+      /* Accent Warm Amber */
+      --amber: #D97706;
+      --amber-soft: #FFFBEB;
+      --amber-line: #FDE68A;
+
+      /* Industry Specific Identity Colors */
+      --ind-giao-duc: #4F46E5;
+      --ind-giao-duc-bg: #EEF2FF;
+      --ind-ke-toan: #059669;
+      --ind-ke-toan-bg: #ECFDF5;
+      --ind-xay-dung: #EA580C;
+      --ind-xay-dung-bg: #FFEDD5;
+      --ind-ban-hang: #E11D48;
+      --ind-ban-hang-bg: #FFE4E6;
+      --ind-nhan-su: #7C3AED;
+      --ind-nhan-su-bg: #F3E8FF;
+
+      /* File Types */
+      --pptx: #B7472A;
+      --pptx-bg: #F9EAE6;
+      --docx: #2B579A;
+      --docx-bg: #E8EEF7;
+      --xlsx: #1F6F43;
+      --xlsx-bg: #E6F1EA;
+
+      /* Radii */
+      --r-sm: 8px;
+      --r-md: 10px;
+      --r-lg: 12px;
+      --r-xl: 16px;
+      --r-2xl: 20px;
+      --r-3xl: 24px;
+      --r-full: 999px;
+
+      /* Shadows */
+      --sh-1: 0 1px 3px rgba(13, 15, 20, 0.04);
+      --sh-2: 0 4px 16px -4px rgba(13, 15, 20, 0.08), 0 1px 2px rgba(13, 15, 20, 0.03);
+      --sh-3: 0 12px 32px -8px rgba(13, 15, 20, 0.12), 0 2px 4px rgba(13, 15, 20, 0.04);
+      --sh-glow: 0 0 24px rgba(0, 120, 95, 0.18);
+
+      --font-sans: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-sans);
+      background: #111827;
+      color: var(--ink);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Preview Control Bar */
+    .preview-bar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: #1E293B;
+      color: #F8FAFC;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #334155;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .preview-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 15px;
+    }
+    .preview-badge {
+      background: var(--accent);
+      color: white;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: var(--r-full);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .preview-tabs {
+      display: flex;
+      gap: 8px;
+      background: #0F172A;
+      padding: 4px;
+      border-radius: var(--r-md);
+    }
+    .preview-tab-btn {
+      background: transparent;
+      border: none;
+      color: #94A3B8;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: var(--font-sans);
+    }
+    .preview-tab-btn.active {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    /* Container Frames */
+    .stage-container {
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+    }
+    .viewport-frame {
+      background: var(--bg);
+      border-radius: 16px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+    .viewport-desktop {
+      max-width: 1440px;
+    }
+    .viewport-mobile {
+      max-width: 390px;
+      border: 10px solid #1E293B;
+      border-radius: 40px;
+    }
+
+    .view-pane { display: none; }
+    .view-pane.active { display: block; }
+
+    /* Utility UI Components inside Mockup */
+    a { color: inherit; text-decoration: none; }
+    .mono { font-family: var(--font-mono); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-weight: 600;
+      border-radius: var(--r-md);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      border: none;
+      font-family: var(--font-sans);
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #FFFFFF;
+      box-shadow: 0 2px 6px rgba(0, 120, 95, 0.25);
+    }
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 120, 95, 0.35);
+    }
+    .btn-secondary {
+      background: var(--surface-3);
+      color: var(--ink);
+    }
+    .btn-secondary:hover {
+      background: var(--surface-4);
+      color: var(--ink);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--line-strong);
+      color: var(--ink);
+    }
+    .btn-outline:hover {
+      border-color: var(--ink);
+      background: rgba(13,15,20,0.02);
+    }
+    .btn-dark {
+      background: var(--ink);
+      color: #FFFFFF;
+    }
+    .btn-dark:hover {
+      background: #1F2430;
+    }
+
+    .tag-file {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      padding: 3px 7px;
+      border-radius: 5px;
+      letter-spacing: 0.04em;
+    }
+    .tag-pptx { color: var(--pptx); background: var(--pptx-bg); }
+    .tag-docx { color: var(--docx); background: var(--docx-bg); }
+    .tag-xlsx { color: var(--xlsx); background: var(--xlsx-bg); }
+
+    /* --- SECTION 1: HEADER --- */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(247, 247, 248, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+      height: 68px;
+      display: flex;
+      align-items: center;
+      padding: 0 48px;
+      justify-content: space-between;
+    }
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 19px;
+      letter-spacing: -0.03em;
+    }
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      box-shadow: 0 2px 8px rgba(0, 120, 95, 0.3);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 14.5px;
+      font-weight: 500;
+      color: var(--ink-2);
+    }
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* --- SECTION 2: HERO SECTION --- */
+    .hero-section {
+      padding: 64px 48px 72px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 56px;
+      align-items: center;
+      background: linear-gradient(180deg, rgba(230,242,239,0.4) 0%, rgba(247,247,248,0) 100%);
+      position: relative;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 14px 4px 10px;
+      border-radius: var(--r-full);
+      background: var(--accent-soft);
+      border: 1px solid var(--accent-line);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .hero-title {
+      font-size: 52px;
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+      color: var(--ink);
+      margin-bottom: 18px;
+    }
+    .hero-title span {
+      color: var(--accent);
+      position: relative;
+    }
+    .hero-subtitle {
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--ink-2);
+      margin-bottom: 28px;
+      max-width: 520px;
+    }
+
+    /* Hero Search Bar */
+    .hero-search-box {
+      background: var(--surface);
+      border: 1.5px solid var(--line-strong);
+      border-radius: var(--r-xl);
+      padding: 8px;
+      box-shadow: var(--sh-2);
+      transition: all 0.2s ease;
+      margin-bottom: 14px;
+    }
+    .hero-search-box:focus-within {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(0, 120, 95, 0.12), var(--sh-2);
+    }
+    .search-input-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 4px 12px;
+    }
+    .search-input-wrapper input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 16px;
+      font-family: var(--font-sans);
+      color: var(--ink);
+      background: transparent;
+    }
+    .search-input-wrapper input::placeholder {
+      color: var(--ink-4);
+    }
+    .prompt-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-top: 10px;
+      border-top: 1px solid var(--line);
+      margin-top: 8px;
+    }
+    .chip {
+      font-size: 12.5px;
+      color: var(--ink-2);
+      background: var(--surface-3);
+      padding: 5px 12px;
+      border-radius: var(--r-full);
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .chip:hover {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .hero-trust-notes {
+      display: flex;
+      gap: 20px;
+      margin-top: 24px;
+      font-size: 13.5px;
+      color: var(--ink-3);
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Hero Right Visual Showcase (Input -> Processing -> Output) */
+    .hero-visual-card {
+      background: var(--surface);
+      border: 1px solid var(--line-strong);
+      border-radius: var(--r-2xl);
+      padding: 24px;
+      box-shadow: var(--sh-3);
+      position: relative;
+    }
+    .flow-step-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      background: var(--surface-2);
+      padding: 8px 14px;
+      border-radius: var(--r-md);
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--ink-2);
+    }
+    .flow-status-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 4px 10px;
+      border-radius: var(--r-full);
+      font-size: 12px;
+    }
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0% { opacity: 0.4; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.2); }
+      100% { opacity: 0.4; transform: scale(0.9); }
+    }
+
+    .visual-comparison-box {
+      display: grid;
+      grid-template-columns: 1fr 28px 1.4fr;
+      gap: 12px;
+      align-items: center;
+    }
+    .input-mock-file {
+      background: var(--surface-2);
+      border: 1.5px dashed var(--line-strong);
+      border-radius: var(--r-lg);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .output-mock-pptx {
+      background: #0D0F14;
+      color: white;
+      border-radius: var(--r-lg);
+      padding: 16px;
+      box-shadow: var(--sh-2);
+      position: relative;
+    }
+    .slide-mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      margin-top: 12px;
+    }
+    .slide-thumb {
+      aspect-ratio: 16/9;
+      background: rgba(255,255,255,0.08);
+      border-radius: 4px;
+      padding: 4px;
+      font-size: 7px;
+      color: #94A3B8;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .slide-thumb.active {
+      border-color: var(--accent);
+      background: rgba(0, 120, 95, 0.2);
+    }
+
+    /* --- SECTION 3: TRUST BAR --- */
+    .trust-bar {
+      background: var(--surface);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 20px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+    .trust-stat {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .trust-stat-num {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+    }
+    .trust-stat-lbl {
+      font-size: 13.5px;
+      color: var(--ink-3);
+      line-height: 1.3;
+    }
+
+    /* --- SECTION 4: INDUSTRY DISCOVERY CARDS --- */
+    .section-padding {
+      padding: 72px 48px;
+    }
+    .section-header {
+      margin-bottom: 32px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+    .section-title {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+    .section-desc {
+      font-size: 15.5px;
+      color: var(--ink-3);
+      margin-top: 6px;
+    }
+
+    .industry-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+    .ind-card {
+      background: var(--surface);
+      border: 1.5px solid var(--line);
+      border-radius: var(--r-xl);
+      padding: 20px 18px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .ind-card:hover, .ind-card.active {
+      transform: translateY(-4px);
+      box-shadow: var(--sh-2);
+    }
+    .ind-card.active {
+      border-width: 2px;
+    }
+    .ind-card[data-ind="giao-duc"].active { border-color: var(--ind-giao-duc); background: linear-gradient(180deg, var(--ind-giao-duc-bg) 0%, #FFFFFF 100%); }
+    .ind-card[data-ind="ke-toan"].active { border-color: var(--ind-ke-toan); background: linear-gradient(180deg, var(--ind-ke-toan-bg) 0%, #FFFFFF 100%); }
+    .ind-card[data-ind="xay-dung"].active { border-color: var(--ind-xay-dung); background: linear-gradient(180deg, var(--ind-xay-dung-bg) 0%, #FFFFFF 100%); }
+    .ind-card[data-ind="ban-hang"].active { border-color: var(--ind-ban-hang); background: linear-gradient(180deg, var(--ind-ban-hang-bg) 0%, #FFFFFF 100%); }
+    .ind-card[data-ind="nhan-su"].active { border-color: var(--ind-nhan-su); background: linear-gradient(180deg, var(--ind-nhan-su-bg) 0%, #FFFFFF 100%); }
+
+    .ind-icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      font-size: 20px;
+    }
+    .ind-name {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .ind-count {
+      font-size: 12.5px;
+      color: var(--ink-3);
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+    .ind-tasks {
+      font-size: 13px;
+      color: var(--ink-2);
+      line-height: 1.5;
+      margin-bottom: 16px;
+      flex: 1;
+    }
+    .ind-link {
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* --- SECTION 5: FEATURED TOOL CARDS & FILTERS --- */
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+      background: var(--surface);
+      padding: 12px 18px;
+      border-radius: var(--r-xl);
+      border: 1px solid var(--line);
+    }
+    .filter-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      padding: 6px 14px;
+      border-radius: var(--r-full);
+      font-size: 13.5px;
+      font-weight: 600;
+      border: 1px solid var(--line);
+      background: var(--surface-2);
+      color: var(--ink-2);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn.active {
+      background: var(--ink);
+      color: white;
+      border-color: var(--ink);
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .tool-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--r-xl);
+      padding: 22px;
+      box-shadow: var(--sh-1);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .tool-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--sh-2);
+      border-color: var(--line-strong);
+    }
+    .tool-card.featured-card {
+      grid-column: span 2;
+      background: linear-gradient(135deg, #FFFFFF 0%, var(--surface-2) 100%);
+      border: 1.5px solid var(--accent-line);
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 20px;
+    }
+
+    .tool-card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .tool-ind-badge {
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .tool-title {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .tool-desc {
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--ink-3);
+      margin-bottom: 20px;
+      flex: 1;
+    }
+    .tool-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 13px;
+      color: var(--ink-4);
+      margin-bottom: 18px;
+    }
+    .tool-foot {
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .tool-price {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+    }
+    .tool-price-unit {
+      font-size: 12px;
+      color: var(--ink-4);
+      font-weight: 400;
+    }
+
+    .doc-preview-thumb {
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+      border-radius: var(--r-md);
+      padding: 10px;
+      margin-bottom: 14px;
+      font-size: 11px;
+      color: var(--ink-3);
+    }
+
+    /* --- SECTION 6: 3-STEP WORKFLOW --- */
+    .workflow-section {
+      background: var(--ink);
+      color: white;
+      padding: 80px 48px;
+      border-radius: var(--r-3xl);
+      margin: 0 48px;
+    }
+    .workflow-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+      position: relative;
+    }
+    .step-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--r-xl);
+      padding: 28px 24px;
+      position: relative;
+      transition: all 0.3s;
+    }
+    .step-card:hover {
+      background: rgba(255,255,255,0.08);
+      transform: translateY(-2px);
+    }
+    .step-num {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(0, 120, 95, 0.3);
+      color: #34D399;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .step-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .step-desc {
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.68);
+    }
+
+    /* --- SECTION 7: BEFORE / AFTER PROOF --- */
+    .proof-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    .proof-tab-btn {
+      padding: 8px 20px;
+      border-radius: var(--r-full);
+      background: var(--surface);
+      border: 1px solid var(--line-strong);
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .proof-tab-btn.active {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+    .proof-comparison-card {
+      background: var(--surface);
+      border: 1px solid var(--line-strong);
+      border-radius: var(--r-2xl);
+      padding: 32px;
+      box-shadow: var(--sh-2);
+      display: grid;
+      grid-template-columns: 1fr 60px 1.3fr;
+      gap: 20px;
+      align-items: center;
+    }
+
+    /* --- SECTION 8: PRICING (PAY PER USE) --- */
+    .pricing-card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    .price-card {
+      background: var(--surface);
+      border: 1.5px solid var(--line);
+      border-radius: var(--r-2xl);
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.25s;
+    }
+    .price-card.popular {
+      border-color: var(--accent);
+      box-shadow: var(--sh-3);
+    }
+    .popular-tag {
+      position: absolute;
+      top: -12px;
+      right: 24px;
+      background: var(--accent);
+      color: white;
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 3px 12px;
+      border-radius: var(--r-full);
+    }
+    .price-amount {
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--ink);
+      letter-spacing: -0.03em;
+      margin: 12px 0 4px;
+    }
+
+    /* --- SECTION 9: FAQ & ZALO --- */
+    .faq-wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .faq-item {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--r-lg);
+      padding: 18px 22px;
+      cursor: pointer;
+    }
+    .faq-q {
+      font-weight: 700;
+      font-size: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-a {
+      font-size: 14.5px;
+      color: var(--ink-3);
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+
+    /* --- SECTION 10: CTA BANNER --- */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--accent) 0%, #004D3D 100%);
+      color: white;
+      border-radius: var(--r-3xl);
+      padding: 64px;
+      text-align: center;
+      margin: 0 48px;
+    }
+
+    /* --- SECTION 11: FOOTER --- */
+    .site-footer {
+      background: var(--surface);
+      border-top: 1px solid var(--line);
+      padding: 64px 48px 40px;
+      margin-top: 80px;
+      font-size: 14px;
+      color: var(--ink-3);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+
+    /* Mobile View Overrides */
+    .mobile-screen {
+      width: 390px;
+      background: var(--bg);
+      font-size: 14px;
+    }
+    .mobile-header {
+      height: 56px;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(247,247,248,0.95);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .mobile-hero {
+      padding: 24px 16px 32px;
+    }
+    .mobile-hero .hero-title {
+      font-size: 32px;
+    }
+    .mobile-ind-scroll {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding: 0 16px 16px;
+      scroll-snap-type: x mandatory;
+    }
+    .mobile-ind-card {
+      min-width: 150px;
+      scroll-snap-align: start;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: var(--r-lg);
+      padding: 14px;
+    }
+    .mobile-nav-bar {
+      position: fixed;
+      bottom: 0;
+      width: 390px;
+      height: 60px;
+      background: white;
+      border-top: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      z-index: 99;
+    }
+
+    /* Design System Token Display */
+    .ds-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 32px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .ds-card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: var(--sh-1);
+    }
+    .swatch {
+      height: 48px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: flex-end;
+      padding: 6px 10px;
+      font-size: 11px;
+      font-family: var(--font-mono);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Controller Bar -->
+  <div class="preview-bar">
+    <div class="preview-title">
+      <div class="logo-icon" style="width:24px;height:24px;border-radius:6px;font-size:12px;">T</div>
+      <span>Trợ Thủ — Live Mockup Preview</span>
+      <span class="preview-badge">Senior UI/UX Design Proposal</span>
+    </div>
+    <div class="preview-tabs">
+      <button class="preview-tab-btn active" onclick="switchView('desktop')">🖥️ Desktop (1440px)</button>
+      <button class="preview-tab-btn" onclick="switchView('mobile')">📱 Mobile (390px)</button>
+      <button class="preview-tab-btn" onclick="switchView('tool-detail')">📄 Màn Chi Tiết Công Cụ</button>
+      <button class="preview-tab-btn" onclick="switchView('design-system')">🎨 Design System Tokens</button>
+    </div>
+  </div>
+
+  <div class="stage-container">
+
+    <!-- ==================== VIEW 1: DESKTOP HOMEPAGE ==================== -->
+    <div id="view-desktop" class="view-pane active viewport-frame viewport-desktop">
+
+      <!-- SECTION 1: HEADER -->
+      <header class="site-header">
+        <div class="logo-group">
+          <div class="logo-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h9M4 12h16M4 17h6"/></svg>
+          </div>
+          <span>Trợ Thủ</span>
+        </div>
+        <nav class="nav-links">
+          <a href="#cong-cu" style="color:var(--accent);font-weight:600;">Khám phá công cụ</a>
+          <a href="#nganh-nghe">Ngành nghề</a>
+          <a href="#cach-hoat-dong">Cách hoạt động</a>
+          <a href="#bang-gia">Bảng giá</a>
+          <a href="#huong-dan">Hướng dẫn</a>
+        </nav>
+        <div class="header-actions">
+          <a href="#" style="font-size:14px;font-weight:600;color:var(--ink-2);">Đăng nhập</a>
+          <button class="btn btn-primary" style="height:40px;padding:0 18px;font-size:14px;">Dùng thử miễn phí</button>
+        </div>
+      </header>
+
+      <!-- SECTION 2: HERO SECTION -->
+      <section class="hero-section">
+        <div>
+          <div class="hero-badge">
+            <span class="pulse-dot"></span>
+            <span>17 công cụ AI hỗ trợ cho 5 ngành nghề</span>
+          </div>
+
+          <h1 class="hero-title">
+            Giấy tờ lặp đi lặp lại,<br><span>giao cho máy làm.</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            Gõ việc bạn cần — bài giảng, biên bản, báo cáo, hợp đồng. Nhận về file Word, Excel, PowerPoint mở lên sửa được từng chữ. Trả tiền theo từng lượt, không thuê bao.
+          </p>
+
+          <!-- Search Box & Prompt Chips -->
+          <div class="hero-search-box">
+            <div class="search-input-wrapper">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg>
+              <input type="text" placeholder="Bạn muốn Trợ Thủ làm việc gì giúp bạn hôm nay?" value="Soạn bài giảng Toán lớp 5 tiết Phân số">
+              <button class="btn btn-primary" style="height:42px;padding:0 24px;font-size:15px;">Tìm công cụ</button>
+            </div>
+            <div class="prompt-chips">
+              <span class="mono" style="font-size:11px;color:var(--ink-4);align-self:center;margin-right:4px;">Gợi ý:</span>
+              <span class="chip">✨ Soạn bài giảng Toán 5</span>
+              <span class="chip">📊 Đối soát sao kê ngân hàng</span>
+              <span class="chip">📝 Tạo hợp đồng lao động</span>
+              <span class="chip">🏗️ Viết biên bản nghiệm thu</span>
+            </div>
+          </div>
+
+          <!-- Trust Badges -->
+          <div class="hero-trust-notes">
+            <div class="trust-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+              <span>Bài đầu miễn phí</span>
+            </div>
+            <div class="trust-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+              <span>Không cần cài phần mềm</span>
+            </div>
+            <div class="trust-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+              <span>Không tự động gia hạn</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side Visual Workflow Card -->
+        <div class="hero-visual-card">
+          <div class="flow-step-bar">
+            <span>Luồng xử lý tự động</span>
+            <div class="flow-status-pill">
+              <span class="pulse-dot"></span>
+              <span>Đang tạo bài giảng PowerPoint...</span>
+            </div>
+          </div>
+
+          <div class="visual-comparison-box">
+            <!-- Input File -->
+            <div class="input-mock-file">
+              <div style="display:flex;align-items:center;gap:6px;">
+                <span class="tag-file tag-docx">DOCX</span>
+                <span style="font-size:12px;font-weight:600;color:var(--ink-2);">giao-an-toan-5.docx</span>
+              </div>
+              <div style="font-size:11px;color:var(--ink-4);line-height:1.4;margin-top:4px;">
+                "Giáo án Tiết 42: Phân số bằng nhau. Mục tiêu: Giúp học sinh hiểu tính chất cơ bản của phân số..."
+              </div>
+            </div>
+
+            <!-- Arrow Indicator -->
+            <div style="text-align:center;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </div>
+
+            <!-- Output Deck Preview -->
+            <div class="output-mock-pptx">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+                <span class="tag-file tag-pptx">PPTX</span>
+                <span style="font-size:10px;color:#A0A5AE;" class="mono">13 SLIDES</span>
+              </div>
+              <div style="font-size:14px;font-weight:700;color:white;line-height:1.2;">
+                Bài 42: Phân số bằng nhau
+              </div>
+              <div style="font-size:10px;color:var(--accent-line);margin-top:2px;">Toán lớp 5 • Bộ sách Kết Nối</div>
+
+              <div class="slide-mini-grid">
+                <div class="slide-thumb active">Slide 1<br><b style="color:white">Tiêu đề</b></div>
+                <div class="slide-thumb">Slide 2<br>Khởi động</div>
+                <div class="slide-thumb">Slide 3<br>Khám phá</div>
+                <div class="slide-thumb">Slide 4<br>Luyện tập</div>
+                <div class="slide-thumb">Slide 5<br>Vận dụng</div>
+                <div class="slide-thumb">Slide 6<br>Tổng kết</div>
+              </div>
+
+              <div style="display:flex;align-items:center;gap:6px;margin-top:10px;font-size:11px;color:#34D399;font-weight:600;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+                <span>Mở trong PowerPoint sửa được từng chữ & hình</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: TRUST BAR -->
+      <section class="trust-bar">
+        <div class="trust-stat">
+          <div class="trust-stat-num">17+</div>
+          <div class="trust-stat-lbl">Công cụ chuyên sâu<br>cho công việc Việt Nam</div>
+        </div>
+        <div style="width:1px;height:32px;background:var(--line);"></div>
+        <div class="trust-stat">
+          <div class="trust-stat-num">5</div>
+          <div class="trust-stat-lbl">Ngành nghề chính<br>Giáo dục, Kế toán, Xây dựng...</div>
+        </div>
+        <div style="width:1px;height:32px;background:var(--line);"></div>
+        <div class="trust-stat">
+          <div class="trust-stat-num">100%</div>
+          <div class="trust-stat-lbl">File kết quả sửa được<br>Word, Excel, PowerPoint</div>
+        </div>
+        <div style="width:1px;height:32px;background:var(--line);"></div>
+        <div class="trust-stat">
+          <div class="trust-stat-num">Minh bạch</div>
+          <div class="trust-stat-lbl">Biết trước giá & thời gian<br>Không phát sinh chi phí</div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: INDUSTRY DISCOVERY CARDS -->
+      <section id="nganh-nghe" class="section-padding">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Bạn đang làm công việc gì?</h2>
+            <p class="section-desc">Chọn ngành nghề của bạn để xem danh sách công cụ được thiết kế sẵn theo đúng nghiệp vụ</p>
+          </div>
+          <a href="#" style="font-weight:600;color:var(--accent);font-size:14.5px;">Xem tất cả 17 công cụ →</a>
+        </div>
+
+        <div class="industry-grid">
+          <!-- Card 1: Giáo dục -->
+          <div class="ind-card active" data-ind="giao-duc" onclick="selectIndustry('giao-duc', this)">
+            <div class="ind-icon-box" style="background:var(--ind-giao-duc-bg);color:var(--ind-giao-duc);">🎓</div>
+            <div class="ind-name">Giáo dục</div>
+            <div class="ind-count">6 công cụ chuyên biệt</div>
+            <div class="ind-tasks">Soạn bài giảng PPTX, đề kiểm tra, phiếu bài tập phân hoá, nhận xét học bạ...</div>
+            <div class="ind-link" style="color:var(--ind-giao-duc);">Khám phá ngay →</div>
+          </div>
+
+          <!-- Card 2: Kế toán -->
+          <div class="ind-card" data-ind="ke-toan" onclick="selectIndustry('ke-toan', this)">
+            <div class="ind-icon-box" style="background:var(--ind-ke-toan-bg);color:var(--ind-ke-toan);">📊</div>
+            <div class="ind-name">Kế toán</div>
+            <div class="ind-count">3 công cụ chuyên biệt</div>
+            <div class="ind-tasks">Đối soát sao kê ngân hàng, phân loại hóa đơn, bảng tổng hợp thu chi Excel...</div>
+            <div class="ind-link" style="color:var(--ind-ke-toan);">Khám phá ngay →</div>
+          </div>
+
+          <!-- Card 3: Xây dựng -->
+          <div class="ind-card" data-ind="xay-dung" onclick="selectIndustry('xay-dung', this)">
+            <div class="ind-icon-box" style="background:var(--ind-xay-dung-bg);color:var(--ind-xay-dung);">🏗️</div>
+            <div class="ind-name">Xây dựng</div>
+            <div class="ind-count">3 công cụ chuyên biệt</div>
+            <div class="ind-tasks">Biên bản nghiệm thu, nhật ký công trình, hồ sơ hoàn công Word chuẩn...</div>
+            <div class="ind-link" style="color:var(--ind-xay-dung);">Khám phá ngay →</div>
+          </div>
+
+          <!-- Card 4: Bán hàng -->
+          <div class="ind-card" data-ind="ban-hang" onclick="selectIndustry('ban-hang', this)">
+            <div class="ind-icon-box" style="background:var(--ind-ban-hang-bg);color:var(--ind-ban-hang);">🛍️</div>
+            <div class="ind-name">Bán hàng</div>
+            <div class="ind-count">3 công cụ chuyên biệt</div>
+            <div class="ind-tasks">Báo giá sản phẩm, hợp đồng mua bán, kịch bản chốt đơn Zalo & telesale...</div>
+            <div class="ind-link" style="color:var(--ind-ban-hang);">Khám phá ngay →</div>
+          </div>
+
+          <!-- Card 5: Nhân sự -->
+          <div class="ind-card" data-ind="nhan-su" onclick="selectIndustry('nhan-su', this)">
+            <div class="ind-icon-box" style="background:var(--ind-nhan-su-bg);color:var(--ind-nhan-su);">💼</div>
+            <div class="ind-name">Nhân sự</div>
+            <div class="ind-count">2 công cụ chuyên biệt</div>
+            <div class="ind-tasks">Hợp đồng lao động Bộ luật 2019, thông báo nhân sự, quy chế công ty...</div>
+            <div class="ind-link" style="color:var(--ind-nhan-su);">Khám phá ngay →</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 5: FEATURED TOOL CARDS & FILTERS -->
+      <section id="cong-cu" class="section-padding" style="background:var(--surface-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Công cụ nổi bật</h2>
+            <p class="section-desc">Đang hiển thị các công cụ hỗ trợ cho ngành <b id="active-ind-label" style="color:var(--accent)">Giáo dục</b></p>
+          </div>
+
+          <!-- Filter Pills -->
+          <div class="filter-pills">
+            <button class="filter-btn active">Tất cả định dạng</button>
+            <button class="filter-btn">PPTX (PowerPoint)</button>
+            <button class="filter-btn">DOCX (Word)</button>
+            <button class="filter-btn">XLSX (Excel)</button>
+          </div>
+        </div>
+
+        <div class="tools-grid">
+
+          <!-- Featured Large Card 1 -->
+          <div class="tool-card featured-card">
+            <div>
+              <div class="tool-card-head">
+                <span class="tag-file tag-pptx">PPTX</span>
+                <span class="tool-ind-badge" style="background:var(--ind-giao-duc-bg);color:var(--ind-giao-duc);">Giáo dục</span>
+              </div>
+              <div class="tool-title" style="font-size:22px;">Tạo bài giảng PowerPoint từ giáo án</div>
+              <div class="tool-desc">
+                Nhập đề bài hoặc tải file giáo án Word. Trợ Thủ sẽ tạo ngay bộ slide 10–15 trang có thiết kế chuẩn sư phạm, hình ảnh minh họa, bảng biểu và hiệu ứng mở được trong PowerPoint.
+              </div>
+              <div class="tool-meta">
+                <span>⏱️ Xử lý: 10–20 phút</span>
+                <span>✨ Bài đầu miễn phí</span>
+              </div>
+              <div class="tool-foot">
+                <div>
+                  <span class="tool-price">45.000₫</span>
+                  <span class="tool-price-unit">/ lượt chạy</span>
+                </div>
+                <button class="btn btn-primary" style="height:44px;padding:0 22px;">Dùng ngay →</button>
+              </div>
+            </div>
+
+            <!-- Card Thumbnail Right Preview -->
+            <div style="background:#0D0F14;border-radius:var(--r-lg);padding:16px;color:white;display:flex;flex-direction:column;justify-content:space-between;">
+              <div>
+                <div style="font-size:11px;color:var(--accent);font-family:var(--font-mono);margin-bottom:6px;">PREVIEW KẾT QUẢ</div>
+                <div style="font-size:15px;font-weight:700;">Slide Tiết 42: Phân số bằng nhau</div>
+                <div style="font-size:11px;color:#94A3B8;margin-top:4px;">13 Slide đầy đủ mục tiêu, hoạt động, trò chơi trắc nghiệm</div>
+              </div>
+              <div style="background:rgba(255,255,255,0.06);border-radius:6px;padding:10px;font-size:11px;color:#34D399;display:flex;align-items:center;gap:6px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+                Tự động định dạng font Be Vietnam Pro
+              </div>
+            </div>
+          </div>
+
+          <!-- Standard Card 2 -->
+          <div class="tool-card">
+            <div class="tool-card-head">
+              <span class="tag-file tag-docx">DOCX</span>
+              <span class="tool-ind-badge" style="background:var(--ind-giao-duc-bg);color:var(--ind-giao-duc);">Giáo dục</span>
+            </div>
+            <div class="tool-title">Soạn đề kiểm tra & Ma trận đề</div>
+            <div class="tool-desc">
+              Tạo đề kiểm tra 15p, 45p hoặc giữa kỳ bám sát cấu trúc Bộ GD&ĐT (Nhận biết, Thông hiểu, Vận dụng, Vận dụng cao) kèm đáp án chi tiết.
+            </div>
+            <div class="doc-preview-thumb">
+              📄 Kết quả: File Word .docx chuẩn căn lề A4, có đáp án & thang điểm.
+            </div>
+            <div class="tool-foot">
+              <div>
+                <span class="tool-price">12.000₫</span>
+                <span class="tool-price-unit">/ lượt</span>
+              </div>
+              <button class="btn btn-secondary" style="height:38px;padding:0 16px;font-size:13.5px;">Dùng ngay</button>
+            </div>
+          </div>
+
+          <!-- Standard Card 3 -->
+          <div class="tool-card">
+            <div class="tool-card-head">
+              <span class="tag-file tag-docx">DOCX</span>
+              <span class="tool-ind-badge" style="background:var(--ind-giao-duc-bg);color:var(--ind-giao-duc);">Giáo dục</span>
+            </div>
+            <div class="tool-title">Phiếu bài tập phân hoá 3 mức độ</div>
+            <div class="tool-desc">
+              Cùng 1 bài học, tự động chia thành 3 phiếu cho học sinh Cần cố gắng, Khá và Giỏi. Căn chỉnh sẵn trang A4 chỉ việc in ra.
+            </div>
+            <div class="doc-preview-thumb">
+              📄 Kết quả: File Word .docx gồm 3 phần riêng biệt cho 3 nhóm HS.
+            </div>
+            <div class="tool-foot">
+              <div>
+                <span class="tool-price">9.000₫</span>
+                <span class="tool-price-unit">/ lượt</span>
+              </div>
+              <button class="btn btn-secondary" style="height:38px;padding:0 16px;font-size:13.5px;">Dùng ngay</button>
+            </div>
+          </div>
+
+          <!-- Standard Card 4 -->
+          <div class="tool-card">
+            <div class="tool-card-head">
+              <span class="tag-file tag-xlsx">XLSX</span>
+              <span class="tool-ind-badge" style="background:var(--ind-ke-toan-bg);color:var(--ind-ke-toan);">Kế toán</span>
+            </div>
+            <div class="tool-title">Đối soát sao kê ngân hàng tự động</div>
+            <div class="tool-desc">
+              Tải lên sao kê PDF/Excel và sổ quỹ công ty. Trợ Thủ tự khớp lệnh, phát hiện khoản chênh lệch và tô màu đánh dấu dòng lỗi.
+            </div>
+            <div class="doc-preview-thumb">
+              📊 Kết quả: File Excel .xlsx có bảng Pivot, tô màu xanh/đỏ dòng sai lệch.
+            </div>
+            <div class="tool-foot">
+              <div>
+                <span class="tool-price">12.000₫</span>
+                <span class="tool-price-unit">/ lượt</span>
+              </div>
+              <button class="btn btn-secondary" style="height:38px;padding:0 16px;font-size:13.5px;">Dùng ngay</button>
+            </div>
+          </div>
+
+          <!-- Standard Card 5 -->
+          <div class="tool-card">
+            <div class="tool-card-head">
+              <span class="tag-file tag-docx">DOCX</span>
+              <span class="tool-ind-badge" style="background:var(--ind-xay-dung-bg);color:var(--ind-xay-dung);">Xây dựng</span>
+            </div>
+            <div class="tool-title">Biên bản nghiệm thu công trình</div>
+            <div class="tool-desc">
+              Nhập thông tin thi công hoặc chụp ảnh nhật ký. Xuất biên bản nghiệm thu công việc xây dựng đúng mẫu Nghị định 06/2021.
+            </div>
+            <div class="doc-preview-thumb">
+              📄 Kết quả: File Word .docx đúng biểu mẫu pháp lý công trình.
+            </div>
+            <div class="tool-foot">
+              <div>
+                <span class="tool-price">12.000₫</span>
+                <span class="tool-price-unit">/ lượt</span>
+              </div>
+              <button class="btn btn-secondary" style="height:38px;padding:0 16px;font-size:13.5px;">Dùng ngay</button>
+            </div>
+          </div>
+
+          <!-- Standard Card 6 -->
+          <div class="tool-card">
+            <div class="tool-card-head">
+              <span class="tag-file tag-docx">DOCX</span>
+              <span class="tool-ind-badge" style="background:var(--ind-nhan-su-bg);color:var(--ind-nhan-su);">Nhân sự</span>
+            </div>
+            <div class="tool-title">Tạo hợp đồng lao động chuẩn 2019</div>
+            <div class="tool-desc">
+              Điền nhanh thông tin nhân viên, mức lương và phụ cấp. Trợ Thủ xuất hợp đồng lao động đầy đủ các điều khoản bảo vệ doanh nghiệp.
+            </div>
+            <div class="doc-preview-thumb">
+              📄 Kết quả: File Word .docx căn chỉnh lề chuẩn, sẵn sàng in ký.
+            </div>
+            <div class="tool-foot">
+              <div>
+                <span class="tool-price">8.000₫</span>
+                <span class="tool-price-unit">/ lượt</span>
+              </div>
+              <button class="btn btn-secondary" style="height:38px;padding:0 16px;font-size:13.5px;">Dùng ngay</button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- SECTION 6: 3-STEP WORKFLOW -->
+      <section id="cach-hoat-dong" style="padding:48px 0;">
+        <div class="workflow-section">
+          <div style="text-align:center;max-width:640px;margin:0 auto;">
+            <div style="color:var(--accent);font-family:var(--font-mono);font-size:13px;font-weight:600;letter-spacing:0.1em;margin-bottom:8px;">QUY TRÌNH ĐƠN GIẢN</div>
+            <h2 style="font-size:36px;font-weight:800;letter-spacing:-0.03em;">Ba bước. Không có bước nào phải học.</h2>
+            <p style="font-size:16px;color:rgba(255,255,255,0.7);margin-top:12px;">Mọi công cụ trên Trợ Thủ đều chạy đúng ba bước này — quen một cái là dùng được cả 17 công cụ.</p>
+          </div>
+
+          <div class="workflow-grid">
+            <div class="step-card">
+              <div class="step-num">01</div>
+              <div class="step-title">Nói bạn cần gì hoặc tải file</div>
+              <div class="step-desc">
+                Gõ một câu mô tả hoặc kéo thả file có sẵn (giáo án Word, sao kê PDF, ảnh ghi chép). Không có biểu mẫu phức tạp nào phải điền.
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-num">02</div>
+              <div class="step-title">Xem trước giá và thời gian</div>
+              <div class="step-desc">
+                Trợ Thủ báo trước rõ ràng chi phí (ví dụ 12.000₫) và thời gian chờ (ví dụ 4 phút). Bạn bấm "Chạy" mới trừ tiền trong tài khoản.
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-num">03</div>
+              <div class="step-title">Tải về file hoàn chỉnh để sửa</div>
+              <div class="step-desc">
+                Nhận về file Word (.docx), Excel (.xlsx) hoặc PowerPoint (.pptx) xịn. Mở trực tiếp trên máy tính của bạn sửa từng chữ, từng ô.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 7: BEFORE / AFTER PROOF SHOWCASE -->
+      <section class="section-padding">
+        <div style="text-align:center;max-width:640px;margin:0 auto 32px;">
+          <h2 class="section-title">Thấy tận mắt kết quả trước khi dùng</h2>
+          <p class="section-desc">Không chỉ là lời hứa suông. Hãy xem sự khác biệt giữa đầu vào bạn đưa và file hoàn chỉnh Trợ Thủ trả về.</p>
+        </div>
+
+        <div class="proof-tabs">
+          <button class="proof-tab-btn active">🎓 Giáo dục (Bài giảng PPTX)</button>
+          <button class="proof-tab-btn">📊 Kế toán (Đối soát Excel)</button>
+          <button class="proof-tab-btn">💼 Nhân sự (Hợp đồng Word)</button>
+        </div>
+
+        <div style="max-width:1080px;margin:0 auto;">
+          <div class="proof-comparison-card">
+            <!-- Left Input -->
+            <div style="background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r-lg);padding:20px;">
+              <div style="font-size:12px;font-weight:700;color:var(--ink-3);margin-bottom:10px;">ĐẦU VÀO CỦA BẠN</div>
+              <div style="font-size:13.5px;color:var(--ink-2);background:white;padding:12px;border-radius:8px;border:1px solid var(--line);">
+                <b>Yêu cầu nhập:</b><br>
+                "Soạn giúp cô bài giảng Tiết 15 môn Địa lý 6: Các đới khí hậu trên Trái Đất. Cần có hình ảnh các đới và câu hỏi tương tác."
+              </div>
+            </div>
+
+            <!-- Center Arrow -->
+            <div style="text-align:center;">
+              <div style="width:40px;height:40px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;margin:0 auto;font-weight:700;">
+                ➔
+              </div>
+            </div>
+
+            <!-- Right Output -->
+            <div style="background:#0D0F14;color:white;border-radius:var(--r-lg);padding:24px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+                <span class="tag-file tag-pptx">KẾT QUẢ PPTX</span>
+                <span style="font-size:12px;color:var(--accent-line);">14 Slide hoàn chỉnh</span>
+              </div>
+              <div style="font-size:18px;font-weight:800;color:white;">
+                Tiết 15: Các đới khí hậu trên Trái Đất
+              </div>
+              <div style="font-size:12px;color:#94A3B8;margin-top:6px;">
+                Bao gồm: Đới nóng (Nhiệt đới), 2 Đới hòa hoãn (Ôn đới), 2 Đới lạnh (Hàn đới). Có bản đồ khí hậu minh họa & 5 câu hỏi Quiz cuối bài.
+              </div>
+              <div style="margin-top:16px;display:flex;gap:8px;">
+                <span class="chip" style="background:rgba(255,255,255,0.1);color:white;">Tự động sắp xếp bố cục</span>
+                <span class="chip" style="background:rgba(255,255,255,0.1);color:white;">Sửa được từng đối tượng</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 8: PRICING (PAY-PER-USE) -->
+      <section id="bang-gia" class="section-padding" style="background:var(--surface-2);border-top:1px solid var(--line);">
+        <div style="text-align:center;max-width:640px;margin:0 auto 40px;">
+          <div style="display:inline-block;background:var(--amber-soft);color:var(--amber);padding:4px 12px;border-radius:var(--r-full);font-size:12.5px;font-weight:700;margin-bottom:12px;">MÔ HÌNH NẠP TIỀN THÔNG MINH</div>
+          <h2 class="section-title">Nạp trước, dùng dần. Không thuê bao.</h2>
+          <p class="section-desc">Tiền trong tài khoản không bao giờ hết hạn. Biết trước giá tiền từng bài trước khi chạy. Lỗi hệ thống hoàn tiền 100%.</p>
+        </div>
+
+        <div class="pricing-card-grid">
+          <!-- Pack 100k -->
+          <div class="price-card">
+            <div style="font-size:16px;font-weight:700;color:var(--ink-2);">Gói Trải Nghiệm</div>
+            <div class="price-amount">100.000₫</div>
+            <div style="font-size:13.5px;color:var(--ink-3);margin-bottom:24px;">Nạp 100k nhận đúng 100k vào tài khoản</div>
+            <div style="flex:1;font-size:13.5px;line-height:1.7;color:var(--ink-2);">
+              ✔️ Chạy được ~2 bài giảng PPTX hoành tráng<br>
+              ✔️ Hoặc soạn ~8 đề kiểm tra Word<br>
+              ✔️ Dùng cho tất cả 17 công cụ<br>
+              ✔️ Hạn dùng: Vĩnh viễn không hết hạn
+            </div>
+            <button class="btn btn-outline" style="height:44px;margin-top:24px;">Nạp 100.000₫</button>
+          </div>
+
+          <!-- Pack 300k Popular -->
+          <div class="price-card popular">
+            <div class="popular-tag">ĐƯỢC CHỌN NHIỀU NHẤT (+5%)</div>
+            <div style="font-size:16px;font-weight:700;color:var(--accent);">Gói Phổ Thông</div>
+            <div class="price-amount">300.000₫</div>
+            <div style="font-size:13.5px;color:var(--accent);font-weight:600;margin-bottom:24px;">Nhận ngay 315.000₫ (Tặng thêm 15k)</div>
+            <div style="flex:1;font-size:13.5px;line-height:1.7;color:var(--ink-2);">
+              ✔️ Chạy được ~7 bài giảng PPTX lớn<br>
+              ✔️ Hoặc ~26 đề kiểm tra / phiếu bài tập<br>
+              ✔️ Đã bao gồm bài dùng thử miễn phí đầu tiên<br>
+              ✔️ Tiền không hết hạn, không tự gia hạn
+            </div>
+            <button class="btn btn-primary" style="height:44px;margin-top:24px;">Nạp 300.000₫ →</button>
+          </div>
+
+          <!-- Pack 500k -->
+          <div class="price-card">
+            <div style="font-size:16px;font-weight:700;color:var(--ink-2);">Gói Tiết Kiệm</div>
+            <div class="price-amount">500.000₫</div>
+            <div style="font-size:13.5px;color:var(--amber);font-weight:600;margin-bottom:24px;">Nhận ngay 550.000₫ (Tặng 10% = +50k)</div>
+            <div style="flex:1;font-size:13.5px;line-height:1.7;color:var(--ink-2);">
+              ✔️ Chạy được ~12 bài giảng PPTX<br>
+              ✔️ Hoặc ~45 hợp đồng & hồ sơ nghiệp vụ<br>
+              ✔️ Tiết kiệm nhất cho công việc thường xuyên<br>
+              ✔️ Hoàn tiền 100% nếu công cụ chạy lỗi
+            </div>
+            <button class="btn btn-outline" style="height:44px;margin-top:24px;">Nạp 500.000₫</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 9: FAQ & SUPPORT -->
+      <section id="huong-dan" class="section-padding">
+        <div style="text-align:center;max-width:640px;margin:0 auto 36px;">
+          <h2 class="section-title">Câu hỏi thường gặp</h2>
+          <p class="section-desc">Giải đáp thắc mắc cho thầy cô và anh chị văn phòng lần đầu sử dụng</p>
+        </div>
+
+        <div class="faq-wrapper">
+          <div class="faq-item">
+            <div class="faq-q"><span>Tôi nhận được loại file gì sau khi máy chạy xong?</span> <span>+</span></div>
+            <div class="faq-a">Bạn nhận về file gốc Word (.docx), Excel (.xlsx) hoặc PowerPoint (.pptx). Tải về máy mở lên là chỉnh sửa được từng chữ, từng hình, từng công thức như file bạn tự gõ.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q"><span>Có cần phải cài đặt phần mềm nào vào máy không?</span> <span>+</span></div>
+            <div class="faq-a">Không cần cài đặt bất kỳ phần mềm hay tiện ích nào. Bạn chỉ cần truy cập website trothu.vercel.app trên máy tính hoặc điện thoại là dùng được ngay.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q"><span>Nếu công cụ chạy ra kết quả bị lỗi thì sao?</span> <span>+</span></div>
+            <div class="faq-a">Nếu hệ thống gặp sự cố không trả ra file hoặc file bị lỗi cấu trúc, Trợ Thủ sẽ tự động hoàn 100% tiền của lượt đó lại vào tài khoản của bạn ngay lập tức.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q"><span>Tôi thanh toán nạp tiền bằng hình thức nào?</span> <span>+</span></div>
+            <div class="faq-a">Bạn có thể chuyển khoản bằng quét mã VietQR ngân hàng hoặc ứng dụng MoMo. Tiền sẽ vào tài khoản tự động trong vòng 30 giây đến 1 phút.</div>
+          </div>
+        </div>
+
+        <!-- Zalo Support Box -->
+        <div style="max-width:600px;margin:32px auto 0;background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:var(--r-xl);padding:20px;display:flex;align-items:center;justify-content:space-between;">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="font-size:24px;">💬</span>
+            <div>
+              <div style="font-weight:700;font-size:15px;color:var(--accent);">Cần hỗ trợ trực tiếp?</div>
+              <div style="font-size:13px;color:var(--ink-2);">Đội ngũ Trợ Thủ sẵn sàng giải đáp qua Zalo 8h00 – 22h00 hàng ngày</div>
+            </div>
+          </div>
+          <button class="btn btn-primary" style="height:36px;padding:0 14px;font-size:13px;">Chat Zalo Hỗ Trợ</button>
+        </div>
+      </section>
+
+      <!-- SECTION 10: BOTTOM CONVERSION CTA BANNER -->
+      <section style="padding:0 0 72px;">
+        <div class="cta-banner">
+          <h2 style="font-size:38px;font-weight:800;letter-spacing:-0.03em;margin-bottom:12px;">
+            Đừng làm lại những giấy tờ máy có thể làm giúp bạn.
+          </h2>
+          <p style="font-size:17px;color:rgba(255,255,255,0.85);max-width:560px;margin:0 auto 28px;">
+            Thử ngay bài đầu tiên hoàn toàn miễn phí. Không cần thẻ tín dụng, không cần đăng ký phức tạp.
+          </p>
+          <div style="display:flex;gap:16px;justify-content:center;">
+            <button class="btn btn-dark" style="height:48px;padding:0 28px;font-size:16px;background:white;color:var(--ink);">Dùng thử bài đầu miễn phí →</button>
+            <button class="btn btn-outline" style="height:48px;padding:0 24px;font-size:15px;color:white;border-color:rgba(255,255,255,0.4);">Xem tất cả 17 công cụ</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 11: FOOTER -->
+      <footer class="site-footer">
+        <div class="footer-grid">
+          <div>
+            <div class="logo-group" style="margin-bottom:12px;">
+              <div class="logo-icon">T</div>
+              <span>Trợ Thủ</span>
+            </div>
+            <p style="line-height:1.6;margin-bottom:16px;">
+              Nền tảng công cụ AI tự động hóa giấy tờ và công việc văn phòng lặp đi lặp lại cho người đi làm Việt Nam.
+            </p>
+            <div class="mono" style="font-size:12px;color:var(--ink-4);">
+              [TÊN HỘ KINH DOANH] • MST [MÃ SỐ THUẾ]
+            </div>
+          </div>
+
+          <div>
+            <b style="color:var(--ink);display:block;margin-bottom:12px;">Ngành nghề</b>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <a href="#">Giáo dục</a>
+              <a href="#">Kế toán</a>
+              <a href="#">Xây dựng</a>
+              <a href="#">Bán hàng</a>
+              <a href="#">Nhân sự</a>
+            </div>
+          </div>
+
+          <div>
+            <b style="color:var(--ink);display:block;margin-bottom:12px;">Sản phẩm</b>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <a href="#">Tạo bài giảng PPTX</a>
+              <a href="#">Soạn đề kiểm tra</a>
+              <a href="#">Đối soát sao kê</a>
+              <a href="#">Biên bản nghiệm thu</a>
+              <a href="#">Bảng giá lượt</a>
+            </div>
+          </div>
+
+          <div>
+            <b style="color:var(--ink);display:block;margin-bottom:12px;">Hỗ trợ</b>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <a href="#">Hướng dẫn sử dụng</a>
+              <a href="#">Câu hỏi thường gặp</a>
+              <a href="#">Zalo hỗ trợ</a>
+              <a href="#">Liên hệ vận hành</a>
+            </div>
+          </div>
+
+          <div>
+            <b style="color:var(--ink);display:block;margin-bottom:12px;">Pháp lý</b>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <a href="#">Điều khoản sử dụng</a>
+              <a href="#">Chính sách dữ liệu</a>
+              <a href="#">Chính sách hoàn tiền</a>
+            </div>
+          </div>
+        </div>
+
+        <div style="border-top:1px solid var(--line);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:13px;">
+          <span>© 2026 Trợ Thủ. Tất cả quyền được bảo lưu.</span>
+          <span>Thiết kế tối ưu cho người dùng Việt Nam 🇻🇳</span>
+        </div>
+      </footer>
+
+    </div>
+
+    <!-- ==================== VIEW 2: MOBILE HOMEPAGE ==================== -->
+    <div id="view-mobile" class="view-pane viewport-frame viewport-mobile">
+      <div class="mobile-screen">
+        <!-- Mobile Header -->
+        <div class="mobile-header">
+          <div class="logo-group" style="font-size:16px;">
+            <div class="logo-icon" style="width:26px;height:26px;font-size:12px;">T</div>
+            <span>Trợ Thủ</span>
+          </div>
+          <div style="display:flex;gap:8px;">
+            <button class="btn btn-primary" style="height:36px;padding:0 12px;font-size:13px;">Thử miễn phí</button>
+            <button style="background:none;border:none;font-size:20px;padding:4px;">☰</button>
+          </div>
+        </div>
+
+        <!-- Mobile Hero -->
+        <div class="mobile-hero">
+          <span class="hero-badge" style="font-size:11px;padding:3px 10px;">✨ 17 công cụ cho 5 ngành</span>
+          <h1 class="hero-title" style="font-size:28px;line-height:1.15;margin-top:8px;">
+            Giấy tờ lặp lại,<br><span style="color:var(--accent);">giao máy làm giúp.</span>
+          </h1>
+          <p style="font-size:13.5px;color:var(--ink-2);margin:10px 0 16px;">
+            Gõ việc cần làm ➔ Nhận về file Word, Excel, PPTX sửa được từng chữ. Trả theo lượt.
+          </p>
+
+          <!-- Mobile Search Input -->
+          <div style="background:white;border:1px solid var(--line-strong);border-radius:12px;padding:6px 10px;display:flex;align-items:center;gap:8px;box-shadow:var(--sh-1);">
+            <input type="text" placeholder="Tìm công cụ..." style="border:none;outline:none;font-size:14px;width:100%;">
+            <button class="btn btn-primary" style="height:36px;padding:0 12px;font-size:13px;">Tìm</button>
+          </div>
+        </div>
+
+        <!-- Mobile Industry Carousel -->
+        <div style="padding:0 16px 8px;font-weight:700;font-size:15px;">Chọn ngành của bạn:</div>
+        <div class="mobile-ind-scroll">
+          <div class="mobile-ind-card" style="border-color:var(--ind-giao-duc);background:var(--ind-giao-duc-bg);">
+            <div style="font-size:20px;">🎓</div>
+            <div style="font-weight:700;margin-top:4px;">Giáo dục</div>
+            <div style="font-size:11px;color:var(--ink-3);">6 công cụ</div>
+          </div>
+          <div class="mobile-ind-card">
+            <div style="font-size:20px;">📊</div>
+            <div style="font-weight:700;margin-top:4px;">Kế toán</div>
+            <div style="font-size:11px;color:var(--ink-3);">3 công cụ</div>
+          </div>
+          <div class="mobile-ind-card">
+            <div style="font-size:20px;">🏗️</div>
+            <div style="font-weight:700;margin-top:4px;">Xây dựng</div>
+            <div style="font-size:11px;color:var(--ink-3);">3 công cụ</div>
+          </div>
+          <div class="mobile-ind-card">
+            <div style="font-size:20px;">🛍️</div>
+            <div style="font-weight:700;margin-top:4px;">Bán hàng</div>
+            <div style="font-size:11px;color:var(--ink-3);">3 công cụ</div>
+          </div>
+        </div>
+
+        <!-- Mobile Tools List -->
+        <div style="padding:16px;">
+          <div style="font-weight:700;font-size:16px;margin-bottom:12px;">Công cụ nổi bật:</div>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div style="background:white;border:1px solid var(--line);border-radius:12px;padding:14px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                <span class="tag-file tag-pptx">PPTX</span>
+                <span style="font-size:13px;font-weight:700;color:var(--ink);">45.000₫</span>
+              </div>
+              <div style="font-weight:700;font-size:15px;">Tạo bài giảng PowerPoint</div>
+              <div style="font-size:12.5px;color:var(--ink-3);margin:4px 0 10px;">Từ giáo án ➔ Deck 10-15 trang sửa được</div>
+              <button class="btn btn-primary" style="width:100%;height:40px;font-size:14px;">Dùng ngay</button>
+            </div>
+
+            <div style="background:white;border:1px solid var(--line);border-radius:12px;padding:14px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                <span class="tag-file tag-docx">DOCX</span>
+                <span style="font-size:13px;font-weight:700;color:var(--ink);">12.000₫</span>
+              </div>
+              <div style="font-weight:700;font-size:15px;">Soạn đề kiểm tra & Ma trận</div>
+              <div style="font-size:12.5px;color:var(--ink-3);margin:4px 0 10px;">File Word kèm đáp án & ma trận</div>
+              <button class="btn btn-secondary" style="width:100%;height:40px;font-size:14px;">Dùng ngay</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Sticky Bottom Navigation -->
+        <div class="mobile-nav-bar">
+          <div style="text-align:center;color:var(--accent);font-weight:700;font-size:11px;">
+            <div style="font-size:18px;">🏠</div>Trang chủ
+          </div>
+          <div style="text-align:center;color:var(--ink-3);font-size:11px;">
+            <div style="font-size:18px;">🧰</div>Công cụ
+          </div>
+          <div style="text-align:center;color:var(--ink-3);font-size:11px;">
+            <div style="font-size:18px;">💰</div>Bảng giá
+          </div>
+          <div style="text-align:center;color:var(--ink-3);font-size:11px;">
+            <div style="font-size:18px;">👤</div>Tài khoản
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== VIEW 3: TOOL DETAIL PAGE MOCKUP ==================== -->
+    <div id="view-tool-detail" class="view-pane viewport-frame viewport-desktop">
+      <header class="site-header">
+        <div class="logo-group">
+          <div class="logo-icon">T</div>
+          <span>Trợ Thủ</span>
+        </div>
+        <div style="font-size:14px;color:var(--ink-3);">
+          Ngành Giáo dục ➔ <b style="color:var(--ink);">Tạo bài giảng PowerPoint</b>
+        </div>
+        <div class="header-actions">
+          <span style="font-size:13px;color:var(--accent);font-weight:600;">Số dư: 315.000₫</span>
+          <button class="btn btn-outline" style="height:36px;padding:0 12px;font-size:13px;">+ Nạp thêm</button>
+        </div>
+      </header>
+
+      <div style="padding:40px 48px;display:grid;grid-template-columns:1fr 380px;gap:36px;">
+        <!-- Left Tool Input Area -->
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+            <span class="tag-file tag-pptx" style="font-size:12px;padding:4px 8px;">PPTX</span>
+            <span class="tool-ind-badge" style="background:var(--ind-giao-duc-bg);color:var(--ind-giao-duc);">Giáo dục</span>
+          </div>
+          <h1 style="font-size:32px;font-weight:800;letter-spacing:-0.03em;">Tạo bài giảng PowerPoint từ giáo án</h1>
+          <p style="font-size:15px;color:var(--ink-3);margin-top:6px;margin-bottom:28px;">
+            Nhập chủ đề bài học hoặc tải lên file giáo án Word. Máy sẽ tự động tạo bài giảng slide 10–15 trang có thiết kế đẹp mắt.
+          </p>
+
+          <!-- Input Form Box -->
+          <div style="background:white;border:1px solid var(--line-strong);border-radius:var(--r-xl);padding:24px;box-shadow:var(--sh-1);">
+            <label style="font-weight:700;font-size:14.5px;display:block;margin-bottom:8px;">1. Nhập chủ đề hoặc yêu cầu bài giảng:</label>
+            <textarea placeholder="Ví dụ: Bài 42 Phân số bằng nhau môn Toán lớp 5 bộ sách Kết nối tri thức. Cần 12 slide có hoạt động khởi động và bài tập nhóm." style="width:100%;height:100px;border:1px solid var(--line-strong);border-radius:8px;padding:12px;font-family:inherit;font-size:14.5px;outline:none;resize:vertical;"></textarea>
+
+            <div style="margin-top:20px;">
+              <label style="font-weight:700;font-size:14.5px;display:block;margin-bottom:8px;">2. Hoặc tải file giáo án có sẵn (Word/PDF):</label>
+              <div style="border:2px dashed var(--accent-line);background:var(--accent-soft);border-radius:12px;padding:24px;text-align:center;cursor:pointer;">
+                <div style="font-size:24px;">📁</div>
+                <div style="font-weight:600;color:var(--accent);margin-top:6px;">Bấm để chọn file từ máy hoặc kéo thả vào đây</div>
+                <div style="font-size:12px;color:var(--ink-4);margin-top:4px;">Hỗ trợ .docx, .pdf tối đa 25MB</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side Sticky Cost & Run Box -->
+        <div>
+          <div style="position:sticky;top:88px;background:white;border:1px solid var(--line-strong);border-radius:var(--r-xl);padding:24px;box-shadow:var(--sh-2);">
+            <div style="font-size:13px;font-weight:700;color:var(--ink-3);letter-spacing:0.05em;">TỔNG QUAN LƯỢT CHẠY</div>
+            <div style="font-size:32px;font-weight:800;color:var(--ink);margin:8px 0 2px;">45.000₫</div>
+            <div style="font-size:12.5px;color:var(--accent);font-weight:600;">✨ Bài này dùng thử miễn phí 0đ</div>
+
+            <div style="border-top:1px solid var(--line);margin:16px 0;padding-top:16px;display:flex;flex-direction:column;gap:10px;font-size:13.5px;color:var(--ink-2);">
+              <div style="display:flex;justify-content:space-between;">
+                <span>⏱️ Thời gian dự kiến:</span>
+                <b>10–15 phút</b>
+              </div>
+              <div style="display:flex;justify-content:space-between;">
+                <span>📦 File trả về:</span>
+                <b>PowerPoint (.pptx)</b>
+              </div>
+              <div style="display:flex;justify-content:space-between;">
+                <span>✏️ Quyền chỉnh sửa:</span>
+                <b>100% từng chữ</b>
+              </div>
+            </div>
+
+            <button class="btn btn-primary" style="width:100%;height:46px;font-size:15px;margin-top:8px;">
+              Bắt đầu tạo bài giảng ngay ➔
+            </button>
+
+            <div style="font-size:12px;color:var(--ink-4);text-align:center;margin-top:12px;">
+              🔒 Đóng trình duyệt máy vẫn tiếp tục chạy, xong sẽ báo tin nhắn
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== VIEW 4: DESIGN SYSTEM SHOWCASE ==================== -->
+    <div id="view-design-system" class="view-pane viewport-frame viewport-desktop">
+      <div style="padding:32px 48px;background:white;border-bottom:1px solid var(--line);">
+        <h1 style="font-size:32px;font-weight:800;">Hệ Thiết Kế Trợ Thủ (Design System Tokens)</h1>
+        <p style="color:var(--ink-3);">Tối ưu hóa riêng cho SaaS người dùng Việt Nam. Tiêu chuẩn accessibility & tương phản cao.</p>
+      </div>
+
+      <div class="ds-grid">
+        <!-- Color Palette Card -->
+        <div class="ds-card">
+          <h3 style="margin-bottom:14px;">Bảng màu Thương hiệu & Ngành</h3>
+          <div class="swatch" style="background:var(--accent);color:white;">Brand Primary: #00785F</div>
+          <div class="swatch" style="background:var(--ink);color:white;">Secondary Navy: #0D0F14</div>
+          <div class="swatch" style="background:var(--ind-giao-duc);color:white;">Giáo dục: #4F46E5</div>
+          <div class="swatch" style="background:var(--ind-ke-toan);color:white;">Kế toán: #059669</div>
+          <div class="swatch" style="background:var(--ind-xay-dung);color:white;">Xây dựng: #EA580C</div>
+          <div class="swatch" style="background:var(--ind-ban-hang);color:white;">Bán hàng: #E11D48</div>
+          <div class="swatch" style="background:var(--ind-nhan-su);color:white;">Nhân sự: #7C3AED</div>
+        </div>
+
+        <!-- Typography Card -->
+        <div class="ds-card">
+          <h3 style="margin-bottom:14px;">Bộ Chữ Tiếng Việt</h3>
+          <div style="font-size:24px;font-weight:800;">Be Vietnam Pro (800)</div>
+          <div style="font-size:16px;font-weight:600;color:var(--ink-2);margin-top:6px;">Hỗ trợ trọn vẹn dấu Tiếng Việt không bị cắt</div>
+          <div class="mono" style="font-size:14px;color:var(--accent);margin-top:16px;">IBM Plex Mono: 45.000₫ • PPTX • 10-15m</div>
+        </div>
+
+        <!-- Components Card -->
+        <div class="ds-card">
+          <h3 style="margin-bottom:14px;">Thẻ Tệp & Nhãn</h3>
+          <div style="display:flex;gap:8px;margin-bottom:12px;">
+            <span class="tag-file tag-pptx">PPTX</span>
+            <span class="tag-file tag-docx">DOCX</span>
+            <span class="tag-file tag-xlsx">XLSX</span>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <span class="btn btn-primary" style="padding:6px 12px;font-size:12px;">Primary Button</span>
+            <span class="btn btn-secondary" style="padding:6px 12px;font-size:12px;">Secondary</span>
+            <span class="btn btn-outline" style="padding:6px 12px;font-size:12px;">Outline</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function switchView(viewName) {
+      document.querySelectorAll('.view-pane').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.preview-tab-btn').forEach(el => el.classList.remove('active'));
+
+      document.getElementById('view-' + viewName).classList.add('active');
+
+      const btnIndex = ['desktop', 'mobile', 'tool-detail', 'design-system'].indexOf(viewName);
+      if (btnIndex !== -1) {
+        document.querySelectorAll('.preview-tab-btn')[btnIndex].classList.add('active');
+      }
+    }
+
+    function selectIndustry(indKey, cardEl) {
+      document.querySelectorAll('.ind-card').forEach(c => c.classList.remove('active'));
+      cardEl.classList.add('active');
+
+      const names = {
+        'giao-duc': 'Giáo dục',
+        'ke-toan': 'Kế toán',
+        'xay-dung': 'Xây dựng',
+        'ban-hang': 'Bán hàng',
+        'nhan-su': 'Nhân sự'
+      };
+      document.getElementById('active-ind-label').textContent = names[indKey];
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+@import "tailwindcss";
+
+/* Hệ thiết kế Trợ Thủ — token rút từ design & hệ màu nhận diện mới */
+@theme {
+  /* Nền và mặt */
+  --color-bg: #f7f7f8;
+  --color-surface: #ffffff;
+  --color-surface-2: #fafafb;
+  --color-surface-3: #f1f2f4;
+  --color-surface-4: #edeef0;
+
+  /* Chữ */
+  --color-ink: #0d0f14;
+  --color-ink-2: #464c57;
+  --color-ink-3: #6b7280;
+  --color-ink-4: #868c97;
+  --color-ink-5: #a0a5ae;
+
+  /* Viền - Tăng cường độ tương phản */
+  --color-line: rgba(13, 15, 20, 0.10);
+  --color-line-strong: rgba(13, 15, 20, 0.20);
+  --color-line-contrast: rgba(13, 15, 20, 0.32);
+
+  /* Nhấn Thương hiệu Primary */
+  --color-accent: #00785f;
+  --color-accent-hover: #00604c;
+  --color-accent-soft: #e6f2ef;
+  --color-accent-line: #b3d7cf;
+
+  /* Nhấn Ấm Amber */
+  --color-amber-accent: #d97706;
+  --color-amber-soft: #fffbeb;
+  --color-amber-line: #fde68a;
+
+  /* Màu định danh Ngành nghề */
+  --color-ind-giao-duc: #4f46e5;
+  --color-ind-giao-duc-bg: #eef2ff;
+  --color-ind-ke-toan: #059669;
+  --color-ind-ke-toan-bg: #ecfdf5;
+  --color-ind-xay-dung: #ea580c;
+  --color-ind-xay-dung-bg: #ffedd5;
+  --color-ind-ban-hang: #e11d48;
+  --color-ind-ban-hang-bg: #ffe4e6;
+  --color-ind-nhan-su: #7c3aed;
+  --color-ind-nhan-su-bg: #f3e8ff;
+
+  /* Tín hiệu */
+  --color-danger: #c0392b;
+  --color-danger-soft: #fbebe9;
+  --color-warn: #b4720e;
+  --color-warn-soft: #fdf6e7;
+  --color-warn-line: #f0dca8;
+  --color-warn-ink: #6b4f08;
+
+  /* Màu định dạng tệp */
+  --color-pptx: #b7472a;
+  --color-pptx-bg: #f9eae6;
+  --color-docx: #2b579a;
+  --color-docx-bg: #e8eef7;
+  --color-xlsx: #1f6f43;
+  --color-xlsx-bg: #e6f1ea;
+
+  /* Bo góc */
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-3xl: 24px;
+
+  /* Bóng - Nâng độ nổi khối tương phản */
+  --shadow-c1: 0 1px 3px rgba(13, 15, 20, 0.06);
+  --shadow-c2: 0 4px 18px -4px rgba(13, 15, 20, 0.12), 0 1px 3px rgba(13, 15, 20, 0.05);
+  --shadow-c3: 0 16px 36px -8px rgba(13, 15, 20, 0.16), 0 2px 6px rgba(13, 15, 20, 0.06);
+  --shadow-glow: 0 0 20px rgba(0, 120, 95, 0.22);
+
+  /* Chữ */
+  --font-sans: var(--font-be-vietnam), system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+}
+
+html {
+  color-scheme: light;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Focus ring thống nhất */
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2.5px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom scrollbar cho danh sách ngành trên mobile */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ── HIỆU ỨNG CHUYỂN ĐỘNG & TƯƠNG TÁC CLICK ── */
+
+/* Active press animation cho nút bấm và card */
+.active-press {
+  transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.15s ease, background-color 0.15s ease;
+}
+.active-press:active {
+  transform: scale(0.965);
+}
+
+/* Hover float elevation */
+.hover-float {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
+}
+.hover-float:hover {
+  transform: translateY(-3.5px);
+  box-shadow: var(--shadow-c2);
+}
+
+/* Keyframes cho chuyển cảnh nội dung mượt */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.97) translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseGlow {
+  0% { transform: scale(0.95); opacity: 0.75; box-shadow: 0 0 0 0 rgba(0, 120, 95, 0.4); }
+  50% { transform: scale(1.1); opacity: 1; box-shadow: 0 0 0 6px rgba(0, 120, 95, 0); }
+  100% { transform: scale(0.95); opacity: 0.75; box-shadow: 0 0 0 0 rgba(0, 120, 95, 0); }
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-up {
+  animation: slideInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.pulse-dot {
+  animation: pulseGlow 2s infinite ease-in-out;
+}
+
+/* Phân chia phân vùng tương phản rõ hơn */
+.section-contrast-light {
+  background-color: #ffffff;
+  border-top: 1px solid var(--color-line-strong);
+  border-bottom: 1px solid var(--color-line-strong);
+}
+
+.section-contrast-tint {
+  background-color: #f1f3f5;
+  border-top: 1.5px solid var(--color-line-strong);
+  border-bottom: 1.5px solid var(--color-line-strong);
+}
+
+.section-contrast-dark {
+  background-color: #0d0f14;
+  color: #ffffff;
+}
+
+.card-high-contrast {
+  border: 1.5px solid var(--color-line-strong);
+  box-shadow: var(--shadow-c1);
+}
+.card-high-contrast:hover {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-c2);
+}
