@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Be_Vietnam_Pro, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
+import { getSiteUrl } from "@/lib/site-url";
+
 // Be Vietnam Pro là bộ chữ thiết kế riêng cho tiếng Việt — dấu không chồng lên chữ hoa
 const beVietnam = Be_Vietnam_Pro({
   variable: "--font-be-vietnam",
@@ -18,7 +20,7 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://trolyai-vn.vercel.app"),
+  metadataBase: new URL(getSiteUrl()),
   title: {
     default: "Trợ Lý AI — Công cụ xử lý giấy tờ cho người đi làm",
     template: "%s — Trợ Lý AI",

@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
+import { getSiteUrl } from "@/lib/site-url";
 
-const GOC = process.env.NEXT_PUBLIC_SITE_URL ?? "https://trolyai-vn.vercel.app";
+const GOC = getSiteUrl();
 
 /** Bật khi còn đang thử nội bộ — chặn toàn bộ máy tìm kiếm */
 const RIENG_TU = process.env.NEXT_PUBLIC_CHE_DO_RIENG_TU === "1";
