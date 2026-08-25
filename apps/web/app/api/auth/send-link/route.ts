@@ -20,13 +20,13 @@ export async function POST(req: Request) {
     const sbAdmin = supabaseAdmin();
 
     // Tự động tạo user nếu chưa tồn tại trong Supabase
-    try {
-      await sbAdmin.auth.admin.createUser({
-        email,
-        email_confirm: true,
-      });
-    } catch {
-      // Nếu user đã tồn tại thì bỏ qua lỗi trùng lặp
+    const { error: createErr } = await sbAdmin.auth.admin.createUser({
+      email,
+      email_confirm: true,
+    });
+    // Nếu user đã tồn tại thì bỏ qua lỗi trùng lặp, các lỗi khác vẫn ném ra
+    if (createErr && !createErr.message.toLowerCase().includes("already") && !createErr.message.toLowerCase().includes("duplicate")) {
+      console.error("[auth/send-link] createUser error:", createErr.message);
     }
 
     // Gửi Magic Link đăng nhập

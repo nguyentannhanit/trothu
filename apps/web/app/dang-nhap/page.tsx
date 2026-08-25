@@ -28,7 +28,7 @@ const LY_DO = [
   },
   {
     ten: "Tài liệu của bạn không đi đâu cả",
-    moTa: "File tải lên bị xoá sau [SỐ] ngày, không dùng để huấn luyện, không chia sẻ cho ai.",
+    moTa: "File tải lên bị xoá sau 7 ngày, không dùng để huấn luyện, không chia sẻ cho ai.",
     icon: "M12 3l8 4v5c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10V7l8-4z",
   },
 ];
@@ -116,7 +116,7 @@ export default function DangNhap() {
           {[
             { so: String(TOOLS.length), ten: "công cụ" },
             { so: String(NGANH.length), ten: "ngành nghề" },
-            { so: "[N]", ten: "hồ sơ đã tạo" },
+            { so: "24/7", ten: "hỗ trợ Zalo" },
           ].map((s) => (
             <div key={s.ten}>
               <div className="font-mono text-[19px] font-medium mb-0.5 tabular">{s.so}</div>

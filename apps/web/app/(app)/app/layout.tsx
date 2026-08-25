@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Logo } from "@/components/site-chrome";
 import { Icon, ICONS, Nut, cx } from "@/components/ui";
+import { NavNganh, NavLinks } from "@/components/sidebar-nav";
 import { NGANH, toolsOf } from "@/lib/tools";
 import { conBaoNhieuLan, thuNgay, vnd } from "@/lib/format";
 import { daCauHinh, phienHienTai } from "@/lib/phien";
@@ -26,49 +27,25 @@ export default async function AppLayout({ children }: { children: React.ReactNod
           <span className="grow text-left">Tìm việc cần làm</span>
         </Link>
 
-        <nav className="flex flex-col gap-0.5">
-          {[
-            { href: "/app", nhan: "Bàn làm việc", icon: ICONS.grid, dam: true },
+        <NavLinks
+          links={[
+            { href: "/app", nhan: "Bàn làm việc", icon: ICONS.grid },
             { href: "/app?loc=dang-chay", nhan: "Việc đang chạy", icon: ICONS.clock, so: phien?.dangChay ?? 0 },
             { href: "/app?loc=tep", nhan: "Tệp đã tạo", icon: ICONS.folder },
-          ].map((n) => (
-            <Link
-              key={n.nhan}
-              href={n.href}
-              className={cx(
-                "flex items-center gap-2.5 h-9.5 px-2.5 rounded-md text-sm",
-                n.dam ? "bg-surface-3 text-ink font-semibold" : "text-ink-2 font-medium hover:bg-surface-2",
-              )}
-            >
-              <Icon d={n.icon} size={17} />
-              <span className="grow">{n.nhan}</span>
-              {!!n.so && (
-                <span className="inline-flex items-center justify-center min-w-4.5 h-4.5 px-1.5 rounded-full bg-accent text-white font-mono text-[10.5px] font-medium">
-                  {n.so}
-                </span>
-              )}
-            </Link>
-          ))}
-        </nav>
+          ]}
+        />
 
         <div>
           <div className="font-mono text-[10.5px] tracking-[0.09em] text-ink-5 px-2.5 mb-2">NGÀNH</div>
-          <div className="flex flex-col gap-0.5">
-            {NGANH.map((n, i) => (
-              <Link
-                key={n.id}
-                href={`/app?nganh=${n.slug}`}
-                className={cx(
-                  "flex items-center gap-2.5 h-9 px-2.5 rounded-md text-[13.5px]",
-                  i === 0 ? "bg-accent-soft text-accent font-semibold" : "text-ink-2 font-medium hover:bg-surface-2",
-                )}
-              >
-                <Icon d={n.icon} size={16} />
-                <span className="grow">{n.ten}</span>
-                <span className="font-mono text-[11px] text-ink-5">{toolsOf(n.slug).length}</span>
-              </Link>
-            ))}
-          </div>
+          <NavNganh
+            nganh={NGANH.map((n) => ({
+              slug: n.slug,
+              ten: n.ten,
+              icon: n.icon,
+              soCongCu: toolsOf(n.slug).length,
+            }))}
+            icons={{}}
+          />
         </div>
 
         <div className="grow" />

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Icon, ICONS, NhanTep, Nut, The, Tien, ThanhTienTrinh, VienTrangThai } from "@/components/ui";
+import { NutHuy } from "@/components/nut-huy";
 import { NGANH, getToolById, toolsOf } from "@/lib/tools";
 import { conLai, khiNao, khoangThoiGian } from "@/lib/format";
 import { vieccuaToi } from "@/lib/phien";
@@ -127,9 +128,7 @@ function ViecDangChay({ viec }: { viec: Job }) {
           <span className="hidden sm:block text-[13px] text-ink-3">
             Còn khoảng <strong className="text-ink font-semibold">{conLai(conBaoLau)}</strong>
           </span>
-          <Nut kieu="vien" co="sm">
-            Huỷ
-          </Nut>
+          <NutHuy jobId={viec.id} />
         </div>
       </div>
 

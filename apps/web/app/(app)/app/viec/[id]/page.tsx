@@ -77,7 +77,7 @@ export default async function TrangViec({ params }: { params: Promise<{ id: stri
             Thiếu nội dung, sai thông tin, hoặc bố cục vỡ — báo trong 24 giờ, tiền hoàn lại vào tài khoản, không hỏi lý
             do.
           </p>
-          <Nut kieu="phu" co="sm" className="w-full">
+          <Nut kieu="phu" co="sm" className="w-full" href={`https://zalo.me/0383331807?text=${encodeURIComponent(`Báo lỗi việc ${viec.id.slice(0, 8)}`)}`}>
             Báo lỗi việc này
           </Nut>
         </The>
@@ -111,7 +111,7 @@ export default async function TrangViec({ params }: { params: Promise<{ id: stri
             <Icon d={ICONS.lock} size={16} />
           </span>
           <p className="text-[12.5px] leading-relaxed text-ink-3">
-            File nguồn bạn tải lên sẽ được xoá sau <strong className="text-ink font-semibold">[SỐ] ngày</strong>. File
+            File nguồn bạn tải lên sẽ được xoá sau <strong className="text-ink font-semibold">7 ngày</strong>. File
             kết quả giữ trong tài khoản cho tới khi bạn xoá.
           </p>
         </The>
