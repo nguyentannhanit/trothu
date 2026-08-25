@@ -33,11 +33,11 @@ const HOI = [
   },
   {
     q: "Trả bằng cách nào?",
-    a: "Chuyển khoản ngân hàng bằng mã QR — tiền vào tài khoản trong khoảng 1 phút, không mất phí. Ví MoMo sẽ có sau.",
+    a: "Chuyển khoản Ngân hàng (Agribank - STK: 5507205155771) bằng mã QR hoặc Ví MoMo (0383331807). Tiền vào tài khoản tự động trong khoảng 1 phút.",
   },
   {
     q: "Có hoá đơn cho cơ quan không?",
-    a: "Có. Nhắn Zalo hỗ trợ kèm thông tin đơn vị, chúng tôi xuất hoá đơn cho phần đã nạp.",
+    a: "Có. Nhắn Zalo 0383331807 kèm thông tin đơn vị, chúng tôi xuất hoá đơn cho phần đã nạp.",
   },
   {
     q: "Vì sao mỗi công cụ một giá khác nhau?",
@@ -101,6 +101,46 @@ export default function TrangGia() {
         <p className="text-center text-[13.5px] text-ink-4 mt-4.5">
           Việc đầu tiên miễn phí — không cần nạp gì để thử.
         </p>
+
+        {/* Khối Thông Tin Thanh Toán Trực Tiếp */}
+        <The className="mt-8 p-7 bg-surface border border-line-strong rounded-2xl">
+          <div className="text-lg font-bold text-ink mb-1 flex items-center gap-2">
+            <span>💳 Phương Thức Thanh Toán & Liên Hệ</span>
+          </div>
+          <p className="text-sm text-ink-3 mb-6">
+            Anh chị có thể nạp tiền tự động qua Chuyển Khoản Ngân Hàng hoặc Ví MoMo. Cần hỗ trợ xuất hóa đơn hay tư vấn gói nạp, hãy liên hệ 24/7:
+          </p>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="p-4 rounded-xl bg-surface-2 border border-line flex flex-col gap-1">
+              <span className="text-xs font-semibold text-accent uppercase">Ngân hàng Agribank</span>
+              <span className="font-mono text-base font-bold text-ink tracking-wide">5507205155771</span>
+              <span className="text-xs text-ink-3">Chuyển khoản QR tự động</span>
+            </div>
+
+            <div className="p-4 rounded-xl bg-surface-2 border border-line flex flex-col gap-1">
+              <span className="text-xs font-semibold text-[#D82D8B] uppercase">Ví MoMo</span>
+              <span className="font-mono text-base font-bold text-ink tracking-wide">0383331807</span>
+              <span className="text-xs text-ink-3">Thanh toán MoMo nhanh</span>
+            </div>
+
+            <div className="p-4 rounded-xl bg-surface-2 border border-line flex flex-col gap-1">
+              <span className="text-xs font-semibold text-[#0068FF] uppercase">Hỗ trợ Zalo 24/7</span>
+              <a href="https://zalo.me/0383331807" target="_blank" rel="noopener noreferrer" className="font-mono text-base font-bold text-ink hover:text-accent tracking-wide underline">
+                0383331807 ↗
+              </a>
+              <span className="text-xs text-ink-3">Nhắn Zalo nhận hỗ trợ ngay</span>
+            </div>
+
+            <div className="p-4 rounded-xl bg-surface-2 border border-line flex flex-col gap-1">
+              <span className="text-xs font-semibold text-[#0088cc] uppercase">Telegram</span>
+              <a href="https://t.me/nhanit" target="_blank" rel="noopener noreferrer" className="font-mono text-base font-bold text-ink hover:text-[#0088cc] tracking-wide underline">
+                @nhanit ↗
+              </a>
+              <span className="text-xs text-ink-3">Chat Telegram trực tiếp</span>
+            </div>
+          </div>
+        </The>
       </section>
 
       <section className="px-6 md:px-16 pb-14">

@@ -24,14 +24,16 @@ export function FloatingZaloWidget() {
       )}
 
       {/* Floating Button */}
-      <Link
-        href="/huong-dan"
+      <a
+        href="https://zalo.me/0383331807"
+        target="_blank"
+        rel="noopener noreferrer"
         className="w-14 h-14 rounded-full bg-[#0068FF] text-white shadow-xl flex items-center justify-center relative active-press transition-transform duration-200 hover:scale-110 border-2 border-white"
-        aria-label="Chat Zalo Hỗ Trợ"
+        aria-label="Chat Zalo Hỗ Trợ 0383331807"
       >
         <span className="w-3.5 h-3.5 rounded-full bg-emerald-400 border-2 border-white absolute top-0 right-0 pulse-dot" />
         <span className="font-extrabold text-xl tracking-tighter">Zalo</span>
-      </Link>
+      </a>
     </div>
   );
 }

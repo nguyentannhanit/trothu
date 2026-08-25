@@ -701,9 +701,14 @@ export default function TrangChu() {
               <div className="text-xs sm:text-sm text-ink-2 font-medium">Đội ngũ Trợ Thủ sẵn sàng giải đáp qua Zalo 8h00 – 22h00 hàng ngày</div>
             </div>
           </div>
-          <Nut kieu="chinh" co="sm" href="/huong-dan" className="shrink-0 font-bold active-press">
-            Chat Zalo Hỗ Trợ
-          </Nut>
+          <a
+            href="https://zalo.me/0383331807"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 font-bold active-press inline-flex items-center justify-center rounded-lg bg-accent text-white px-4 py-2 text-sm shadow-md hover:bg-accent-hover transition-colors"
+          >
+            Chat Zalo 0383331807 ↗
+          </a>
         </div>
       </section>
 

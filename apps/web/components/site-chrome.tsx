@@ -129,8 +129,8 @@ export function SiteFooter() {
           <p className="mt-3.5 text-[14px] leading-relaxed text-ink-3 max-w-[36ch]">
             Nền tảng công cụ AI tự động hóa giấy tờ và công việc văn phòng lặp đi lặp lại cho người đi làm Việt Nam.
           </p>
-          <p className="mt-4 font-mono text-xs text-ink-4">
-            [TÊN HỘ KINH DOANH] · MST [MÃ SỐ THUẾ]
+          <p className="mt-[14px] text-[13.5px] font-medium text-ink-3">
+            Hỗ trợ 24/7: <a href="https://zalo.me/0383331807" target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">Zalo 0383331807</a> · <a href="https://t.me/nhanit" target="_blank" rel="noopener noreferrer" className="text-[#0088cc] font-semibold hover:underline">Telegram @nhanit</a>
           </p>
         </div>
 
@@ -151,12 +151,12 @@ export function SiteFooter() {
         />
 
         <FooterCot
-          tieuDe="Hỗ trợ"
+          tieuDe="Liên hệ & Hỗ trợ"
           muc={[
+            { nhan: "Zalo: 0383331807", href: "https://zalo.me/0383331807", ngoai: true },
+            { nhan: "Telegram: @nhanit", href: "https://t.me/nhanit", ngoai: true },
             { nhan: "Hướng dẫn sử dụng", href: "/huong-dan" },
-            { nhan: "Câu hỏi thường gặp", href: "/huong-dan" },
-            { nhan: "Bảng giá lượt", href: "/gia" },
-            { nhan: "Zalo hỗ trợ 24/7", href: "/huong-dan" },
+            { nhan: "Bảng giá & Thanh toán", href: "/gia" },
           ]}
         />
 
@@ -178,15 +178,27 @@ export function SiteFooter() {
   );
 }
 
-function FooterCot({ tieuDe, muc }: { tieuDe: string; muc: { nhan: string; href: string }[] }) {
+function FooterCot({ tieuDe, muc }: { tieuDe: string; muc: { nhan: string; href: string; ngoai?: boolean }[] }) {
   return (
     <div className="flex flex-col gap-2.5">
       <div className="text-[14px] font-bold text-ink mb-1">{tieuDe}</div>
-      {muc.map((m) => (
-        <Link key={m.nhan} href={m.href} className="text-[13.5px] text-ink-3 hover:text-accent transition-colors">
-          {m.nhan}
-        </Link>
-      ))}
+      {muc.map((m) =>
+        m.ngoai ? (
+          <a
+            key={m.nhan}
+            href={m.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[13.5px] text-ink-3 hover:text-accent transition-colors flex items-center gap-1"
+          >
+            {m.nhan} ↗
+          </a>
+        ) : (
+          <Link key={m.nhan} href={m.href} className="text-[13.5px] text-ink-3 hover:text-accent transition-colors">
+            {m.nhan}
+          </Link>
+        )
+      )}
     </div>
   );
 }
