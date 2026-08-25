@@ -18,7 +18,7 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://trolyai.vercel.app"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://trolyai-vn.vercel.app"),
   title: {
     default: "Trợ Lý AI — Công cụ xử lý giấy tờ cho người đi làm",
     template: "%s — Trợ Lý AI",
