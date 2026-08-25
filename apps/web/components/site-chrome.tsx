@@ -19,6 +19,25 @@ export function Logo({ size = 32, chu = true }: { size?: number; chu?: boolean }
   );
 }
 
+export function DuongDan({ muc }: { muc: { nhan: string; href?: string }[] }) {
+  return (
+    <nav className="flex items-center gap-2 text-xs font-medium text-ink-3">
+      {muc.map((m, idx) => (
+        <span key={idx} className="flex items-center gap-2">
+          {idx > 0 && <span className="text-ink-4">/</span>}
+          {m.href ? (
+            <Link href={m.href} className="hover:text-accent transition-colors">
+              {m.nhan}
+            </Link>
+          ) : (
+            <span className="text-ink font-bold">{m.nhan}</span>
+          )}
+        </span>
+      ))}
+    </nav>
+  );
+}
+
 export function SiteHeader({ trang }: { trang?: "cong-cu" | "gia" | "huong-dan" }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
