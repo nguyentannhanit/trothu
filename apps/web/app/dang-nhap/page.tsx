@@ -65,7 +65,7 @@ export default function DangNhap() {
       const sb = supabaseBrowser();
       const { error } = await sb.auth.signInWithOAuth({
         provider: "google",
-        options: { redirectTo: `${location.origin}/api/auth/confirm` },
+        options: { redirectTo: `${location.origin}/api/auth/callback` },
       });
       if (error) throw error;
     } catch {

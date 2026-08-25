@@ -16,10 +16,18 @@ export async function GET(req: Request) {
   const url = new URL(req.url);
   const token_hash = url.searchParams.get("token_hash");
   const type = url.searchParams.get("type") as EmailOtpType | null;
+  const code = url.searchParams.get("code");
   const ve = url.searchParams.get("next") ?? "/app";
 
+  const sb = await supabaseServer();
+
+  if (code) {
+    const { error } = await sb.auth.exchangeCodeForSession(code);
+    if (!error) return NextResponse.redirect(new URL(ve, url.origin));
+    console.error("[auth/confirm] exchangeCodeForSession hỏng:", error.message);
+  }
+
   if (token_hash && type) {
-    const sb = await supabaseServer();
     const { error } = await sb.auth.verifyOtp({ type, token_hash });
     if (!error) return NextResponse.redirect(new URL(ve, url.origin));
     console.error("[auth/confirm] verifyOtp hỏng:", error.message);
