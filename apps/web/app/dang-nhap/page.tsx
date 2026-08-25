@@ -44,12 +44,13 @@ export default function DangNhap() {
     setLoi(null);
     setDangGui(true);
     try {
-      const sb = supabaseBrowser();
-      const { error } = await sb.auth.signInWithOtp({
-        email,
-        options: { emailRedirectTo: `${location.origin}/api/auth/confirm` },
+      const res = await fetch("/api/auth/send-link", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ email }),
       });
-      if (error) throw error;
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.message ?? "Không gửi được liên kết");
       setDaGui(true);
     } catch (e) {
       setLoi(dienGiaiLoi(e));
