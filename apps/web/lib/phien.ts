@@ -1,3 +1,4 @@
+import { cache } from "react";
 import { currentUser, supabaseServer } from "./supabase/server";
 import { chuCaiDau } from "./format";
 import type { Job } from "./supabase/types";
@@ -20,7 +21,7 @@ export interface Phien {
  * Thông tin phiên cho khung app. Trả null khi chưa đăng nhập hoặc chưa cấu hình —
  * các màn tự xử lý trường hợp null thay vì ném lỗi, để dev chạy được ngay khi chưa có Supabase.
  */
-export async function phienHienTai(): Promise<Phien | null> {
+export const phienHienTai = cache(async (): Promise<Phien | null> => {
   if (!daCauHinh()) return null;
   try {
     const user = await currentUser();
@@ -44,7 +45,7 @@ export async function phienHienTai(): Promise<Phien | null> {
   } catch {
     return null;
   }
-}
+});
 
 /** Danh sách việc của người đang đăng nhập. Mảng rỗng khi chưa cấu hình. */
 export async function vieccuaToi(limit = 20): Promise<Job[]> {

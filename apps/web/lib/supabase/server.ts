@@ -1,3 +1,4 @@
+import { cache } from "react";
 import { createClient } from "@supabase/supabase-js";
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
@@ -34,10 +35,10 @@ export function supabaseAdmin() {
   return createClient(URL, key, { auth: { persistSession: false } });
 }
 
-export async function currentUser() {
+export const currentUser = cache(async () => {
   const sb = await supabaseServer();
   const {
     data: { user },
   } = await sb.auth.getUser();
   return user;
-}
+});

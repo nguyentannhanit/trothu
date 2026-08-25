@@ -30,17 +30,21 @@ export async function middleware(request: NextRequest) {
     },
   });
 
-  // Quan trọng: Gọi getUser() để tự động duy trì & làm mới cookie phiên Supabase
-  await supabase.auth.getUser();
+  // Chỉ gọi Supabase API làm mới phiên khi trình duyệt thực sự có gửi Cookie auth
+  const hasAuthCookie = request.cookies.getAll().some((c) => c.name.startsWith("sb-") || c.name.includes("auth-token"));
+
+  if (hasAuthCookie) {
+    await supabase.auth.getUser();
+  }
 
   return supabaseResponse;
 }
 
 export const config = {
   matcher: [
-    /*
-     * Áp dụng middleware làm mới phiên cho toàn bộ trang trừ file tĩnh/ảnh
-     */
-    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
+    "/app/:path*",
+    "/admin/:path*",
+    "/api/auth/:path*",
+    "/dang-nhap",
   ],
 };
