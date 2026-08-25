@@ -42,11 +42,32 @@ export default function FormNap({ soDu }: { soDu: number }) {
   const soDuHienTai = soDu;
   const sauKhiNap = soDuHienTai + currentAmount + currentBonus;
 
-  // Tạo mã QR & Mở Modal
-  const handleTaoMaQR = () => {
-    const randomCode = Math.floor(1000 + Math.random() * 9000).toString();
-    setTransactionId(randomCode);
-    setShowQrModal(true);
+  const [dangTaoQR, setDangTaoQR] = useState(false);
+  const [loiNap, setLoiNap] = useState<string | null>(null);
+
+  // Tạo mã QR — ghi intent vào DB trước, rồi mới hiện QR
+  const handleTaoMaQR = async () => {
+    setLoiNap(null);
+    setDangTaoQR(true);
+    try {
+      const res = await fetch("/api/topup/create-intent", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          amount_vnd: currentAmount,
+          bonus_vnd: currentBonus,
+          method: paymentMethod === "agribank" ? "bank_qr" : "momo",
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.message ?? "Không tạo được mã nạp tiền");
+      setTransactionId(data.memoCode);
+      setShowQrModal(true);
+    } catch (e) {
+      setLoiNap(e instanceof Error ? e.message : "Có lỗi xảy ra, thử lại");
+    } finally {
+      setDangTaoQR(false);
+    }
   };
 
   // Copy text helper
@@ -56,8 +77,8 @@ export default function FormNap({ soDu }: { soDu: number }) {
     setTimeout(() => setCopiedField(null), 2000);
   };
 
-  // VietQR / MoMo URLs
-  const noiDungChuyenKhoan = `NAP TROLYAI ${transactionId || "8382"}`;
+  // VietQR / MoMo URLs — transactionId giờ là mã thật từ DB, ví dụ "TT A3KN"
+  const noiDungChuyenKhoan = transactionId || "NAP TROLYAI";
   const vietQrUrl = `https://img.vietqr.io/image/agribank-5507205155771-compact2.png?amount=${currentAmount}&addInfo=${encodeURIComponent(
     noiDungChuyenKhoan
   )}&accountName=NGUYEN%20TAN%20NHAN`;
@@ -205,10 +226,14 @@ export default function FormNap({ soDu }: { soDu: number }) {
               kieu="chinh"
               co="lg"
               onClick={handleTaoMaQR}
+              disabled={dangTaoQR}
               className="w-full mt-5 font-extrabold text-base shadow-md active-press"
             >
-              {paymentMethod === "agribank" ? "Lấy mã QR chuyển khoản →" : "Tạo mã quét MoMo →"}
+              {dangTaoQR
+                ? "Đang tạo mã…"
+                : paymentMethod === "agribank" ? "Lấy mã QR chuyển khoản →" : "Tạo mã quét MoMo →"}
             </Nut>
+            {loiNap && <p className="mt-2 text-[13px] text-danger text-center">{loiNap}</p>}
           </The>
 
           {/* QUY ĐỔI GIÁ TRI */}
