@@ -1,8 +1,8 @@
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
 
 export const metadata = {
-  title: "Điều Khoản Sử Dụng — Trợ Thủ",
-  description: "Quy định sử dụng dịch vụ và chính sách thanh toán, hoàn tiền của Trợ Thủ.",
+  title: "Điều Khoản Sử Dụng — Trợ Lý AI",
+  description: "Quy định sử dụng dịch vụ và chính sách thanh toán, hoàn tiền của Trợ Lý AI.",
 };
 
 export default function DieuKhoanPage() {
@@ -21,7 +21,7 @@ export default function DieuKhoanPage() {
           <section className="bg-surface border-2 border-line-strong rounded-2xl p-6 shadow-c1">
             <h2 className="text-lg font-bold text-ink mb-3">1. Nguyên Tắc Hoạt Động & Mô Hình Nạp Tiền</h2>
             <p className="mb-2">
-              Trợ Thủ cung cấp dịch vụ công cụ AI hỗ trợ xử lý giấy tờ và công việc nghiệp vụ theo mô hình <b>nạp tiền trước, dùng dần theo từng lượt</b>.
+              Trợ Lý AI cung cấp dịch vụ công cụ AI hỗ trợ xử lý giấy tờ và công việc nghiệp vụ theo mô hình <b>nạp tiền trước, dùng dần theo từng lượt</b>.
             </p>
             <ul className="list-disc pl-5 space-y-1">
               <li>Không thu phí đăng ký thuê bao hàng tháng.</li>
@@ -44,7 +44,7 @@ export default function DieuKhoanPage() {
           <section className="bg-surface border-2 border-line-strong rounded-2xl p-6 shadow-c1">
             <h2 className="text-lg font-bold text-ink mb-3">3. Quyền Sở Hữu Tài Liệu Đã Xuất</h2>
             <p>
-              Mọi tệp tin (.docx, .xlsx, .pptx) được tạo ra bởi Trợ Thủ thuộc quyền sở hữu toàn quyền của người dùng. Người dùng có thể tự do sao chép, chỉnh sửa, lưu trữ hoặc thương mại hóa tài liệu của mình mà không cần trả thêm phí bản quyền.
+              Mọi tệp tin (.docx, .xlsx, .pptx) được tạo ra bởi Trợ Lý AI thuộc quyền sở hữu toàn quyền của người dùng. Người dùng có thể tự do sao chép, chỉnh sửa, lưu trữ hoặc thương mại hóa tài liệu của mình mà không cần trả thêm phí bản quyền.
             </p>
           </section>
         </div>

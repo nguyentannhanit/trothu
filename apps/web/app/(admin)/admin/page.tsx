@@ -54,7 +54,7 @@ export default async function TrangQuanTri() {
         <div className="flex items-center gap-3">
           <Logo size={27} chu={false} />
           <div>
-            <div className="text-[14.5px] font-bold tracking-[-0.02em] leading-tight">Trợ Thủ</div>
+            <div className="text-[14.5px] font-bold tracking-[-0.02em] leading-tight">Trợ Lý AI</div>
             <div className="font-mono text-[10px] text-ink-5">QUẢN TRỊ</div>
           </div>
         </div>

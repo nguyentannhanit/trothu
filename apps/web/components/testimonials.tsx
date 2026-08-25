@@ -11,7 +11,7 @@ export function TestimonialsSection() {
       avatarBg: "bg-indigo-600",
       avatarInitial: "M",
       quote:
-        "Trước đây để chuẩn bị 1 tiết bài giảng điện tử PowerPoint kèm câu hỏi trắc nghiệm tôi mất nguyên cả buổi tối. Từ ngày dùng Trợ Thủ, tôi chỉ cần gõ tên tiết dạy bám sách Kết Nối 2018 là có ngay slide PPTX 14 trang hình ảnh đẹp mắt, về chỉnh sửa thêm bớt cực nhanh.",
+        "Trước đây để chuẩn bị 1 tiết bài giảng điện tử PowerPoint kèm câu hỏi trắc nghiệm tôi mất nguyên cả buổi tối. Từ ngày dùng Trợ Lý AI, tôi chỉ cần gõ tên tiết dạy bám sách Kết Nối 2018 là có ngay slide PPTX 14 trang hình ảnh đẹp mắt, về chỉnh sửa thêm bớt cực nhanh.",
       tag: "🎓 Ngành Giáo dục",
     },
     {
@@ -21,7 +21,7 @@ export function TestimonialsSection() {
       avatarBg: "bg-emerald-600",
       avatarInitial: "H",
       quote:
-        "Bảng sao kê ngân hàng hơn 800 dòng mỗi tháng chạy đối soát thủ công rất dễ sót. Tool đối soát trên Trợ Thủ tô màu sẵn các dòng chênh lệch tiền chỉ trong 2 phút. Phí 12k/lượt quá rẻ so với công sức bỏ ra.",
+        "Bảng sao kê ngân hàng hơn 800 dòng mỗi tháng chạy đối soát thủ công rất dễ sót. Tool đối soát trên Trợ Lý AI tô màu sẵn các dòng chênh lệch tiền chỉ trong 2 phút. Phí 12k/lượt quá rẻ so với công sức bỏ ra.",
       tag: "📊 Ngành Kế toán",
     },
     {

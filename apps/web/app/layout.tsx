@@ -18,17 +18,17 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://trothu.vercel.app"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://trolyai.vercel.app"),
   title: {
-    default: "Trợ Thủ — Công cụ xử lý giấy tờ cho người đi làm",
-    template: "%s — Trợ Thủ",
+    default: "Trợ Lý AI — Công cụ xử lý giấy tờ cho người đi làm",
+    template: "%s — Trợ Lý AI",
   },
   description:
     "Bài giảng, biên bản, báo cáo, hợp đồng — nhập nội dung, nhận về file Word, Excel, PowerPoint sửa được từng chữ. Trả theo lượt, không thuê bao.",
   openGraph: {
     type: "website",
     locale: "vi_VN",
-    siteName: "Trợ Thủ",
+    siteName: "Trợ Lý AI",
   },
   // Che do rieng tu: chan may tim kiem o CA the meta lan robots.txt.
   // Bo bien NEXT_PUBLIC_CHE_DO_RIENG_TU khi san sang mo cong khai.

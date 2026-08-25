@@ -663,11 +663,11 @@ export default function TrangChu() {
             },
             {
               q: "Có cần phải cài đặt phần mềm nào vào máy không?",
-              a: "Không cần cài đặt bất kỳ phần mềm hay tiện ích nào. Bạn chỉ cần truy cập website trothu.vercel.app trên máy tính hoặc điện thoại là dùng được ngay.",
+              a: "Không cần cài đặt bất kỳ phần mềm hay tiện ích nào. Bạn chỉ cần truy cập website trolyai.vercel.app trên máy tính hoặc điện thoại là dùng được ngay.",
             },
             {
               q: "Nếu công cụ chạy ra kết quả bị lỗi thì sao?",
-              a: "Nếu hệ thống gặp sự cố không trả ra file hoặc file bị lỗi cấu trúc, Trợ Thủ sẽ tự động hoàn 100% tiền của lượt đó lại vào tài khoản của bạn ngay lập tức.",
+              a: "Nếu hệ thống gặp sự cố không trả ra file hoặc file bị lỗi cấu trúc, Trợ Lý AI sẽ tự động hoàn 100% tiền của lượt đó lại vào tài khoản của bạn ngay lập tức.",
             },
             {
               q: "Tôi thanh toán nạp tiền bằng hình thức nào?",
@@ -698,7 +698,7 @@ export default function TrangChu() {
             <span className="text-3xl p-2 bg-white rounded-xl shadow-2xs">💬</span>
             <div>
               <div className="font-extrabold text-base text-accent">Cần hỗ trợ trực tiếp?</div>
-              <div className="text-xs sm:text-sm text-ink-2 font-medium">Đội ngũ Trợ Thủ sẵn sàng giải đáp qua Zalo 8h00 – 22h00 hàng ngày</div>
+              <div className="text-xs sm:text-sm text-ink-2 font-medium">Đội ngũ Trợ Lý AI sẵn sàng giải đáp qua Zalo 8h00 – 22h00 hàng ngày</div>
             </div>
           </div>
           <a

@@ -4,7 +4,7 @@ import { Icon, ICONS, Nut, The } from "@/components/ui";
 import { NGANH, TOOLS, toolHref } from "@/lib/tools";
 
 export const metadata = {
-  title: "Hướng dẫn dùng Trợ Thủ",
+  title: "Hướng dẫn dùng Trợ Lý AI",
   description: "Ba bước để tạo tệp đầu tiên, cách nạp tiền, và câu trả lời cho những thắc mắc hay gặp.",
   alternates: { canonical: "/huong-dan" },
 };
@@ -64,7 +64,7 @@ export default function TrangHuongDan() {
           Ba bước, không có bước nào phải học
         </h1>
         <p className="mt-4 text-[17px] leading-relaxed text-ink-2 max-w-[62ch]">
-          Cả {TOOLS.length} công cụ trên Trợ Thủ đều chạy đúng ba bước này. Quen một cái là dùng được hết.
+          Cả {TOOLS.length} công cụ trên Trợ Lý AI đều chạy đúng ba bước này. Quen một cái là dùng được hết.
         </p>
       </section>
 

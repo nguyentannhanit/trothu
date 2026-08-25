@@ -174,7 +174,7 @@ function ManLoi({ jobId, tien, chiTiet }: { jobId: string; tien: number; chiTiet
         <div className="bg-surface-2 border border-line rounded-xl px-4 py-3.5 mb-3.5">
           <div className="text-[13px] font-semibold mb-1.5">Chuyện gì đã xảy ra</div>
           <p className="text-[13px] leading-relaxed text-ink-2">
-            {chiTiet ?? "Máy chủ gặp sự cố giữa chừng. Đây là lỗi bên Trợ Thủ, không phải do file bạn tải lên."}
+            {chiTiet ?? "Máy chủ gặp sự cố giữa chừng. Đây là lỗi bên Trợ Lý AI, không phải do file bạn tải lên."}
           </p>
         </div>
 

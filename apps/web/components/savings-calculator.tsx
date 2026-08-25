@@ -23,7 +23,7 @@ export function SavingsCalculator() {
             Bạn sẽ tiết kiệm được bao nhiêu thời gian?
           </h2>
           <p className="text-sm sm:text-base text-ink-3 mt-2 font-medium">
-            Kéo thanh trượt bên dưới để xem Trợ Thủ giúp bạn giải phóng bao nhiêu giờ làm việc lặp đi lặp lại mỗi tháng.
+            Kéo thanh trượt bên dưới để xem Trợ Lý AI giúp bạn giải phóng bao nhiêu giờ làm việc lặp đi lặp lại mỗi tháng.
           </p>
         </div>
 
@@ -100,7 +100,7 @@ export function SavingsCalculator() {
               </div>
 
               <div className="pt-4 border-t border-white/15 mb-6">
-                <div className="text-xs text-white/70 font-medium">Chi phí Trợ Thủ dự kiến/tháng:</div>
+                <div className="text-xs text-white/70 font-medium">Chi phí Trợ Lý AI dự kiến/tháng:</div>
                 <div className="text-2xl font-bold text-amber-300 mt-1">
                   <Tien n={estimatedCostPerMonth} co="lg" />
                   <span className="text-xs font-normal text-white/60 ml-1">/ tháng (nạp trả dần)</span>

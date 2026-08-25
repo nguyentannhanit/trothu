@@ -25,7 +25,7 @@ export const BAN_HANG_TOOLS: Tool[] = [
     hoi: [
       {
         q: "Có xuất được PDF không?",
-        a: "File .xlsx mở bằng Excel rồi xuất PDF trong một bước. Trợ Thủ không xuất PDF trực tiếp để bạn còn sửa được trước khi gửi.",
+        a: "File .xlsx mở bằng Excel rồi xuất PDF trong một bước. Trợ Lý AI không xuất PDF trực tiếp để bạn còn sửa được trước khi gửi.",
       },
       {
         q: "Có nhớ bảng giá của tôi không?",

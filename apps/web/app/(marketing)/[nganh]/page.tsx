@@ -57,7 +57,7 @@ export default async function TrangNganh({ params }: { params: Promise<{ nganh: 
           </div>
 
           <The className="p-5.5">
-            <div className="text-[14.5px] font-semibold mb-4">Ngành {nganh.tenNgan} trên Trợ Thủ</div>
+            <div className="text-[14.5px] font-semibold mb-4">Ngành {nganh.tenNgan} trên Trợ Lý AI</div>
             <div className="flex flex-col gap-3">
               {[
                 { ten: "Công cụ", giaTri: String(congCu.length) },

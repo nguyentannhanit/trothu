@@ -57,7 +57,7 @@ export default function TrangNap() {
   };
 
   // VietQR / MoMo URLs
-  const noiDungChuyenKhoan = `NAP TROTHU ${transactionId || "8382"}`;
+  const noiDungChuyenKhoan = `NAP TROLYAI ${transactionId || "8382"}`;
   const vietQrUrl = `https://img.vietqr.io/image/agribank-5507205155771-compact2.png?amount=${currentAmount}&addInfo=${encodeURIComponent(
     noiDungChuyenKhoan
   )}&accountName=NGUYEN%20TAN%20NHAN`;

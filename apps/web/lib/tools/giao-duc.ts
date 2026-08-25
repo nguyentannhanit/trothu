@@ -87,7 +87,7 @@ export const GIAO_DUC_TOOLS: Tool[] = [
     ten: "Bài giảng từ mẫu có sẵn",
     tomTat: "Điền nội dung vào mẫu dựng sẵn — rẻ hơn vì không vẽ lại bố cục",
     moTa:
-      "Chọn một mẫu bài giảng đã dựng sẵn của Trợ Thủ rồi điền nội dung bài của cô vào. Rẻ hơn ba lần so với vẽ mới hoàn toàn, vì bỏ được khâu tốn kém nhất là dựng bố cục từng trang. Đổi lại, bố cục bị ràng theo mẫu đã chọn.",
+      "Chọn một mẫu bài giảng đã dựng sẵn của Trợ Lý AI rồi điền nội dung bài của cô vào. Rẻ hơn ba lần so với vẽ mới hoàn toàn, vì bỏ được khâu tốn kém nhất là dựng bố cục từng trang. Đổi lại, bố cục bị ràng theo mẫu đã chọn.",
     ext: "pptx",
     thoiGian: [4, 7],
     price_vnd: 15_000,

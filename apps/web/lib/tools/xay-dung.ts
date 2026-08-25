@@ -92,7 +92,7 @@ export const XAY_DUNG_TOOLS: Tool[] = [
       },
       {
         q: "Có ký số được không?",
-        a: "File .docx bình thường, bạn ký số bằng công cụ vẫn dùng. Trợ Thủ không xử lý chữ ký số.",
+        a: "File .docx bình thường, bạn ký số bằng công cụ vẫn dùng. Trợ Lý AI không xử lý chữ ký số.",
       },
     ],
   },

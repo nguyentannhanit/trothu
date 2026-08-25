@@ -1,8 +1,8 @@
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
 
 export const metadata = {
-  title: "Chính Sách Bảo Mật Dữ Liệu — Trợ Thủ",
-  description: "Cam kết bảo mật thông tin và dữ liệu tài liệu cá nhân của người dùng trên Trợ Thủ.",
+  title: "Chính Sách Bảo Mật Dữ Liệu — Trợ Lý AI",
+  description: "Cam kết bảo mật thông tin và dữ liệu tài liệu cá nhân của người dùng trên Trợ Lý AI.",
 };
 
 export default function ChinhSachDuLieuPage() {
@@ -21,7 +21,7 @@ export default function ChinhSachDuLieuPage() {
           <section className="bg-surface border-2 border-line-strong rounded-2xl p-6 shadow-c1">
             <h2 className="text-lg font-bold text-ink mb-3">1. Nguyên Tắc Bảo Mật Tuyệt Đối</h2>
             <p>
-              Trợ Thủ thấu hiểu rằng tài liệu giáo án, sao kê tài chính, biên bản nghiệm thu hay hợp đồng lao động đều chứa thông tin nhạy cảm. Chúng tôi cam kết <b>không bao giờ chia sẻ, bán hoặc sử dụng dữ liệu của bạn cho bất kỳ bên thứ ba nào</b>.
+              Trợ Lý AI thấu hiểu rằng tài liệu giáo án, sao kê tài chính, biên bản nghiệm thu hay hợp đồng lao động đều chứa thông tin nhạy cảm. Chúng tôi cam kết <b>không bao giờ chia sẻ, bán hoặc sử dụng dữ liệu của bạn cho bất kỳ bên thứ ba nào</b>.
             </p>
           </section>
 

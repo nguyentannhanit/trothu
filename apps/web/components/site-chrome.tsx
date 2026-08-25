@@ -14,7 +14,7 @@ export function Logo({ size = 32, chu = true }: { size?: number; chu?: boolean }
       >
         <Icon d={ICONS.logo} size={Math.round(size * 0.56)} width={2.4} />
       </span>
-      {chu && <span className="text-lg font-extrabold tracking-[-0.03em] text-ink">Trợ Thủ</span>}
+      {chu && <span className="text-lg font-extrabold tracking-[-0.03em] text-ink">Trợ Lý AI</span>}
     </Link>
   );
 }
@@ -171,7 +171,7 @@ export function SiteFooter() {
       </div>
 
       <div className="max-w-7xl mx-auto mt-12 pt-6 border-t border-line flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-ink-4">
-        <span>© 2026 Trợ Thủ. Tất cả quyền được bảo lưu.</span>
+        <span>© 2026 Trợ Lý AI. Tất cả quyền được bảo lưu.</span>
         <span>Giao diện tối ưu riêng cho người đi làm Việt Nam 🇻🇳</span>
       </div>
     </footer>

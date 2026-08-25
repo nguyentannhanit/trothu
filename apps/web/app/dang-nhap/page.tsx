@@ -76,7 +76,7 @@ export default function DangNhap() {
   function dienGiaiLoi(e: unknown): string {
     const msg = (e instanceof Error ? e.message : "").toLowerCase();
     if (msg.includes("signups not allowed") || msg.includes("signup is disabled"))
-      return "Địa chỉ này chưa có tài khoản. Trợ Thủ đang trong giai đoạn thử nội bộ, chưa mở đăng ký.";
+      return "Địa chỉ này chưa có tài khoản. Trợ Lý AI đang trong giai đoạn thử nội bộ, chưa mở đăng ký.";
     if (msg.includes("rate limit") || msg.includes("too many"))
       return "Gửi quá nhiều thư trong thời gian ngắn. Chờ khoảng một giờ rồi thử lại.";
     return "Không gửi được liên kết. Kiểm tra lại địa chỉ email rồi thử lần nữa.";
@@ -135,7 +135,7 @@ export default function DangNhap() {
           <h1 className="text-[27px] font-bold tracking-[-0.03em] mb-1.5">Đăng nhập</h1>
           <p className="text-[14.5px] text-ink-3 mb-7">
             {RIENG_TU
-              ? "Trợ Thủ đang chạy thử nội bộ. Chỉ những địa chỉ đã được mời mới đăng nhập được."
+              ? "Trợ Lý AI đang chạy thử nội bộ. Chỉ những địa chỉ đã được mời mới đăng nhập được."
               : "Chưa có tài khoản? Cứ đăng nhập — hệ thống tự tạo cho bạn."}
           </p>
 
@@ -199,7 +199,7 @@ export default function DangNhap() {
                   <Icon d="M3 5h18v14H3zM3 7l9 6 9-6" size={16} />
                 </span>
                 <p className="text-[12.5px] leading-relaxed text-ink-3">
-                  Không cần nhớ mật khẩu. Trợ Thủ gửi một đường dẫn vào email, bấm vào là vào thẳng tài khoản.
+                  Không cần nhớ mật khẩu. Trợ Lý AI gửi một đường dẫn vào email, bấm vào là vào thẳng tài khoản.
                 </p>
               </div>
             </>

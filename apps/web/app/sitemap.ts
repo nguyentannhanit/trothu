@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { NGANH, TOOLS, toolHref } from "@/lib/tools";
 
-const GOC = process.env.NEXT_PUBLIC_SITE_URL ?? "https://trothu.vercel.app";
+const GOC = process.env.NEXT_PUBLIC_SITE_URL ?? "https://trolyai.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // Che do rieng tu: sitemap rong, khong chi duong cho may tim kiem
