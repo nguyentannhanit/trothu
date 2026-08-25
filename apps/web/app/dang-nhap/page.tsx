@@ -76,7 +76,7 @@ export default function DangNhap() {
   function dienGiaiLoi(e: unknown): string {
     const msg = (e instanceof Error ? e.message : "").toLowerCase();
     if (msg.includes("signups not allowed") || msg.includes("signup is disabled"))
-      return "Địa chỉ này chưa có tài khoản. Trợ Lý AI đang trong giai đoạn thử nội bộ, chưa mở đăng ký.";
+      return "Địa chỉ này chưa có tài khoản và tính năng tự đăng ký đang bị tắt ở Supabase. Bạn cần bật 'Allow new users to sign up' trong Supabase Dashboard -> Authentication -> Providers -> Email.";
     if (msg.includes("rate limit") || msg.includes("too many"))
       return "Gửi quá nhiều thư trong thời gian ngắn. Chờ khoảng một giờ rồi thử lại.";
     return "Không gửi được liên kết. Kiểm tra lại địa chỉ email rồi thử lần nữa.";

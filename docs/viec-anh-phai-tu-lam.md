@@ -93,7 +93,7 @@ Web đang chạy ở **chế độ thử nội bộ** từ 24/08/2026. Ba khoá 
 |---|---|---|
 | Máy tìm kiếm | `robots.txt` trả `Disallow: /`, thẻ `noindex`, sitemap rỗng | biến `NEXT_PUBLIC_CHE_DO_RIENG_TU=1` trên Vercel |
 | Người lạ đăng ký | Tắt — email mới không tạo được tài khoản | Supabase → Auth → `disable_signup = true` |
-| Địa chỉ | `trothu.vercel.app`, chưa quảng bá ở đâu | — |
+| Địa chỉ | `trolyai-vn.vercel.app`, chưa quảng bá ở đâu | — |
 
 **Để mở công khai:** xoá biến `NEXT_PUBLIC_CHE_DO_RIENG_TU` trên Vercel rồi deploy lại,
 và bật lại đăng ký trong Supabase. Làm sau khi xong C1–C5, không làm trước.
